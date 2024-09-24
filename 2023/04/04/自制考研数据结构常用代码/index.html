@@ -1,0 +1,5479 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>自制考研数据结构常用代码 | jinganglang567's blog</title><meta name="author" content="jinganglang567"><meta name="copyright" content="jinganglang567"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="自制数据结构考研常用代码顺序表快慢指针删除重复元素#include&lt;bits&#x2F;stdc++.h&gt; using namespace std; struct sqllist&amp;#123; 	vector&lt;int&gt;res; &amp;#125;; typedef struct sqllist sqllist; void delete_duplicate(sqllist&amp;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自制考研数据结构常用代码">
+<meta property="og:url" content="https://jinganglang567.github.io/2023/04/04/%E8%87%AA%E5%88%B6%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="jinganglang567&#39;s blog">
+<meta property="og:description" content="自制数据结构考研常用代码顺序表快慢指针删除重复元素#include&lt;bits&#x2F;stdc++.h&gt; using namespace std; struct sqllist&amp;#123; 	vector&lt;int&gt;res; &amp;#125;; typedef struct sqllist sqllist; void delete_duplicate(sqllist&amp;s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g">
+<meta property="article:published_time" content="2023-04-04T05:46:45.000Z">
+<meta property="article:modified_time" content="2023-04-04T05:53:14.488Z">
+<meta property="article:author" content="jinganglang567">
+<meta property="article:tag" content="考研">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g"><link rel="shortcut icon" href="/./imag/avatar.jfif"><link rel="canonical" href="https://jinganglang567.github.io/2023/04/04/%E8%87%AA%E5%88%B6%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '自制考研数据结构常用代码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-04 13:53:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/duotone.css"><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/css/mouse.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./imag/avatar.jfif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g')"><nav id="nav"><span id="blog-info"><a href="/" title="jinganglang567's blog"><span class="site-name">jinganglang567's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">自制考研数据结构常用代码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-04T05:46:45.000Z" title="发表于 2023-04-04 13:46:45">2023-04-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-04T05:53:14.488Z" title="更新于 2023-04-04 13:53:14">2023-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%80%83%E7%A0%94/">考研</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="自制数据结构考研常用代码"><a href="#自制数据结构考研常用代码" class="headerlink" title="自制数据结构考研常用代码"></a>自制数据结构考研常用代码</h2><h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><h4 id="快慢指针删除重复元素"><a href="#快慢指针删除重复元素" class="headerlink" title="快慢指针删除重复元素"></a>快慢指针删除重复元素</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct sqllist&#123;
+	vector&lt;int&gt;res;
+&#125;;
+typedef struct sqllist sqllist;
+void delete_duplicate(sqllist&amp;s)&#123;
+	if(s.res.size()&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	&#x2F;&#x2F;无论是否重复，第一个元素肯定保持不动，所以下标从1开始
+	int slow&#x3D;1,fast&#x3D;1;
+	while(fast&lt;s.res.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(s.res[fast]!&#x3D;s.res[fast-1])&#123;
+			&#x2F;&#x2F;TODO
+			&#x2F;&#x2F;fast和slow差一，当fast和slow所指元素相同，fast,一直右移，直到找到不是fast-1，所指元素
+			&#x2F;&#x2F;不把fast-1换成slow,是因为考虑下标0
+			s.res[slow]&#x3D;s.res[fast];
+			slow++;
+		&#125;
+		fast++;
+	&#125;
+	s.res.resize(slow);&#x2F;&#x2F;重新设置一下长度
+&#125;
+
+int main()&#123;
+	&#x2F;&#x2F;双指针实现删除有序数组中的重复元素
+	sqllist s;
+	s.res&#x3D;&#123;1,2,3,3,4,4,5&#125;;
+	delete_duplicate(s);
+	for(int num:s.res)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="合并两个顺序表"><a href="#合并两个顺序表" class="headerlink" title="合并两个顺序表"></a>合并两个顺序表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;2.2.3.07合并两个顺序表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct sqllist&#123;
+	vector&lt;int&gt;sql;
+	int lengh;
+	sqllist()&#123;&#125;
+	sqllist(int k):lengh(k),sql(k)&#123;&#125;
+&#125;;
+typedef struct sqllist sqllist;
+sqllist mer(vector&lt;int&gt;&amp;s1,vector&lt;int&gt;&amp;s2)&#123;
+	sqllist res(s1.size()+s2.size());
+	int k&#x3D;0,i&#x3D;0,j&#x3D;0;
+	while(i&lt;s1.size()&amp;&amp;j&lt;s2.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(s1[i]&lt;&#x3D;s2[j])&#123;
+			&#x2F;&#x2F;TODO
+			res.sql[k]&#x3D;s1[i];
+			i++;
+			k++;
+		&#125;else&#123;
+			res.sql[k]&#x3D;s2[j];
+			j++;
+			k++;
+		&#125;
+	&#125;
+	&#x2F;&#x2F;会有剩下的
+	while(i&lt;s1.size())&#123;
+		&#x2F;&#x2F;TODO
+		res.sql[k]&#x3D;s1[i];
+		i++;
+		k++;
+	&#125;
+	while(j&lt;s2.size())&#123;
+		&#x2F;&#x2F;TODO
+		res.sql[k]&#x3D;s2[j];
+		j++;
+		k++;
+	&#125;
+	return res;
+&#125;
+int main()&#123;
+	sqllist s1;
+	for(int i&#x3D;0;i&lt;&#x3D;10;i&#x3D;i+2)&#123;
+		&#x2F;&#x2F;TODO
+		s1.sql.push_back(i);
+	&#125;
+	sqllist s2;
+	for(int i&#x3D;1;i&lt;&#x3D;10;i&#x3D;i+2)&#123;
+		&#x2F;&#x2F;TODO
+		s2.sql.push_back(i);
+	&#125;
+
+	sqllist sres&#x3D; mer(s1.sql,s2.sql);
+	for(int num:sres.sql)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; vet;
+void change_or_insert(vet&amp;v,int x)&#123;
+	int i&#x3D;0,j&#x3D;v.size()-1;
+	int mid&#x3D;0;
+	while(i&lt;&#x3D;j)&#123;
+		&#x2F;&#x2F;TODO
+		mid&#x3D;(i+j)&#x2F;2;
+		if(v[mid]&#x3D;&#x3D;x)&#123;
+			&#x2F;&#x2F;TODO
+			break;
+		&#125;else if(v[mid]&lt;x)&#123;
+			&#x2F;&#x2F;TODO
+			i&#x3D;mid+1;
+		&#125;else&#123;
+			j&#x3D;mid-1;
+		&#125;
+	&#125;
+	if(v[mid]&#x3D;&#x3D;x&amp;&amp;mid!&#x3D;v.size()-1)&#123;
+		&#x2F;&#x2F;TODO
+		swap(v[mid],v[mid+1]);
+	&#125;
+	if(i&gt;j)&#123;
+		&#x2F;&#x2F;TODO
+		i&#x3D;0;
+
+		while(i&lt;v.size())&#123;
+			&#x2F;&#x2F;TODO
+			if(v[i]&lt;x)&#123;
+				&#x2F;&#x2F;TODO，不可能出现&#x3D;x
+				i++;
+				break;&#x2F;&#x2F;找到x的位置
+			&#125;
+		&#125;
+		v.push_back(v[v.size()-1]);
+		for(int j&#x3D;v.size()-2;j&gt;&#x3D;i;j--)&#123;
+			&#x2F;&#x2F;TODO
+			v[j+1]&#x3D;v[j];
+		&#125;
+		v[i]&#x3D;x;
+	&#125;
+&#125;
+int main()&#123;
+	vet v&#123;1,3,4,5,6,7,8,9,10&#125;;
+	change_or_insert(v,2);
+	for(int num:v)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;</code></pre>
+
+<h4 id="循环迁移"><a href="#循环迁移" class="headerlink" title="循环迁移"></a>循环迁移</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+vector&lt;int&gt; left_p(int p,vector&lt;int&gt;&amp;a)&#123;
+	if(a.size()&#x3D;&#x3D;0)&#123;
+		return a;
+	&#125;
+	vector&lt;int&gt; res;
+	for(int i&#x3D;p;i&lt;a.size();i++)&#123;
+		&#x2F;&#x2F;TODO
+		res.push_back(a[i]);
+	&#125;
+	for(int i&#x3D;0;i&lt;p;i++)&#123;
+		&#x2F;&#x2F;TODO
+		res.push_back(a[i]);
+	&#125;
+	return res;
+&#125;
+int main()&#123;
+	vector&lt;int&gt; a&#123;1,2,3,4,5,10,12,13,14,15&#125;;
+	vector&lt;int&gt;res&#x3D;left_p(4,a);
+	for(int num:res)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+
+
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h4 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;反转链表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int data):data(data),next(nullptr)&#123;&#125;
+	listnode(int data,struct listnode*next):data(data),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* mylist;
+void print(listnode *l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+	cout&lt;&lt;endl;
+&#125;
+listnode * create_list()&#123;
+	listnode* p_head&#x3D;new listnode();
+	listnode* p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入链表结点的个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个元素&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		listnode* p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+listnode * reverse_list(listnode*l)&#123;
+	&#x2F;&#x2F;迭代算法
+	&#x2F;&#x2F;每一次循环都需要先记录一下p_move的next,否则修改指针后，next就找不到了
+	listnode *p_move&#x3D;l;
+	listnode *pr&#x3D;nullptr;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		listnode *p_move_next&#x3D;p_move-&gt;next;
+		p_move-&gt;next&#x3D;pr;
+		pr&#x3D;p_move;
+		p_move&#x3D;p_move_next;
+		&#x2F;&#x2F;助记，三条语句执行顺序是个闭合环
+	&#125;
+	return pr;
+
+&#125;
+int main()&#123;
+	listnode* test_list&#x3D;create_list();
+	listnode* res_list&#x3D;reverse_list(test_list-&gt;next);
+	print(res_list);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="合并链表"><a href="#合并链表" class="headerlink" title="合并链表"></a>合并链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(0),next(nullptr)&#123;&#125;
+	listnode(int x):data(x),next(nullptr)&#123;&#125;
+	listnode(int x,struct listnode* next):data(x),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode *l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+&#125;
+&#x2F;&#x2F;合并链表
+listnode * merge_list(listnode *l1,listnode *l2)&#123;
+	listnode *p_head&#x3D;new listnode(-1);
+	listnode *p_move&#x3D;p_head;
+	while(l1!&#x3D;nullptr&amp;&amp;l2!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(l1-&gt;data&lt;l2-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_move-&gt;next&#x3D;l1;
+			l1&#x3D;l1-&gt;next;
+			p_move&#x3D;p_move-&gt;next;
+		&#125;else&#123;
+			p_move-&gt;next&#x3D;l2;
+			l1&#x3D;l2-&gt;next;
+			p_move&#x3D;p_move-&gt;next;
+		&#125;
+	&#125;
+	&#x2F;&#x2F;最后会有l1或者l2有剩下
+	if(l1!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		p_move-&gt;next&#x3D;l1;
+	&#125;else&#123;
+		p_move-&gt;next&#x3D;l2;
+	&#125;
+	cout&lt;&lt;endl;
+	print(p_head);
+	cout&lt;&lt;endl;
+	return p_head-&gt;next;
+&#125;
+listnode* create_list()&#123;
+	int num&#x3D;-1;
+	&#x2F;&#x2F;请输入num,输入0，表示完成
+	cout&lt;&lt;&quot;请输入个数&quot;&lt;&lt;endl;
+	int count&#x3D;0;
+
+	cin &gt;&gt; count;
+	listnode* head&#x3D;new listnode(-1);
+	listnode* p_move&#x3D;head;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;count)&#123;
+		cin&gt;&gt;num;
+		listnode *p_new&#x3D;new listnode(num);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return head;
+&#125;
+
+int main()&#123;
+	&#x2F;&#x2F;创建两个链表
+	listnode* l1&#x3D;create_list();
+	print(l1);
+	listnode* l2&#x3D;create_list();
+	cout&lt;&lt;endl;
+	print(l2);
+	cout&lt;&lt;endl;
+	listnode* out&#x3D;merge_list(l1-&gt;next,l2-&gt;next);
+	print(out);
+&#125;</code></pre>
+
+<h4 id="回文链表"><a href="#回文链表" class="headerlink" title="回文链表"></a>回文链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;回文列表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int data):data(data),next(nullptr)&#123;&#125;
+	listnode(int data,struct listnode*next):data(data),next(next)&#123;&#125;
+&#125;;
+listnode * create_list()&#123;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入链表结点的个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个结点&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+bool is_huiwei(listnode *l)&#123;
+	&#x2F;&#x2F;先将元素全都放入数组，然后双指针遍历
+	vector&lt;int&gt;test;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		test.push_back(l-&gt;data);
+		l&#x3D;l-&gt;next;
+	&#125;
+	if(test.size()%2!&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	for(int i&#x3D;0,j&#x3D;test.size()-1;i&lt;(test.size()&#x2F;2);i++)&#123;
+		&#x2F;&#x2F;TODO
+		if(test[i]&#x3D;&#x3D;test[j])&#123;
+			&#x2F;&#x2F;TODO
+			j--;
+		&#125;else&#123;
+			return false;
+		&#125;
+	&#125;
+	return true;
+&#125;
+int main()&#123;
+    listnode *test&#x3D;create_list();
+	bool hi&#x3D; is_huiwei(test-&gt;next);
+	cout&lt;&lt;hi&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="二进制链表"><a href="#二进制链表" class="headerlink" title="二进制链表"></a>二进制链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int x):data(x),next(nullptr)&#123;&#125;
+	listnode(int x,struct listnode*next):data(x),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode*l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+	&#125;
+	cout&lt;&lt;endl;
+&#125;
+listnode * create_list()&#123;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入结点的个数&quot;&lt;&lt;endl;
+	int counts;
+	cin&gt;&gt;counts;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;counts)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个元素&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+int bi_cal_list(listnode*l)&#123;
+	int res&#x3D;0;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		res&#x3D;res*2+l-&gt;data;
+		l&#x3D;l-&gt;next;
+	&#125;
+	return res;
+&#125;
+int main()&#123;
+	listnode *test&#x3D;create_list();
+	int res&#x3D;bi_cal_list(test-&gt;next);
+	cout&lt;&lt;res&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="链表重合结点"><a href="#链表重合结点" class="headerlink" title="链表重合结点"></a>链表重合结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;判断相交链表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int data):data(data),next(nullptr)&#123;&#125;
+	listnode(int data,struct listnode*next):data(data),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode *l)&#123;
+	while(l-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+&#125;
+listnode * create_list()&#123;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入链表元素的个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个元素&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+listnode * create_dup_list(listnode *l,listnode *lnew)&#123;
+	listnode *p_move&#x3D;l-&gt;next;
+	while(p_move-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	p_move-&gt;next&#x3D;lnew-&gt;next;
+	return l;
+&#125;
+listnode * where_dupnode(listnode *l1,listnode *l2)&#123;
+	&#x2F;&#x2F;将l1的点全部加入集合；
+	&#x2F;&#x2F;然后加另一个集合，如果有重结点就返回
+	unordered_set&lt;listnode*&gt;listnode_co;
+	listnode *p_move&#x3D;l1;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		listnode_co.insert(p_move);
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	p_move&#x3D;l2;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(listnode_co.count(p_move)!&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			return p_move;
+		&#125;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	return nullptr;
+&#125;
+int main()&#123;
+	listnode *l1&#x3D;create_list();
+	listnode *l2&#x3D;create_list();
+	listnode *lnew&#x3D;create_list();
+	listnode *l1dup&#x3D;create_dup_list(l1,lnew);
+	listnode *l2dup&#x3D;create_dup_list(l2,lnew);
+	listnode * dupnode&#x3D;where_dupnode(l1dup-&gt;next,l2dup-&gt;next);
+	if(dupnode&#x3D;&#x3D;nullptr)&#123;
+		cout&lt;&lt;&quot;无&quot;&lt;&lt;endl;
+	&#125;else&#123;cout&lt;&lt;dupnode-&gt;data&lt;&lt;endl;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="判断链表是否环状"><a href="#判断链表是否环状" class="headerlink" title="判断链表是否环状"></a>判断链表是否环状</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode *next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int x):data(x),next(nullptr)&#123;&#125;
+	listnode(int x,struct listnode*next):data(x),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode*l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+&#125;
+listnode * creat_list()&#123;
+	listnode *p_head&#x3D;new listnode(-1);
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入链表结点的个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		&#x2F;&#x2F;TODO
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+&#x2F;&#x2F;构造环链表
+listnode * creat_circle(listnode*l)&#123;
+	listnode *p_move&#x3D;l-&gt;next;
+	&#x2F;&#x2F;请输入尾指针指向第几个位置
+	cout&lt;&lt;&quot;请输入尾指针指向第几个位置&quot;&lt;&lt;endl;
+	int pos;
+	cin&gt;&gt;pos;
+	int i&#x3D;1;
+	while(i&lt;pos)&#123;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	listnode *p_pos&#x3D;p_move;
+	while(p_move-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	&#x2F;&#x2F;cout&lt;&lt;p_move-&gt;data&lt;&lt;endl;
+	p_move-&gt;next&#x3D;p_pos;
+	return l;
+&#125;
+bool is_circle(listnode*l)&#123;
+	listnode *p_move&#x3D;l;
+	unordered_set&lt;listnode*&gt;seen;
+	int i&#x3D;1;
+	while(p_move-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(seen.count(p_move)&#x3D;&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			seen.insert(p_move);
+			p_move&#x3D;p_move-&gt;next;
+			i++;
+		&#125;else&#123;
+			return true;
+		&#125;
+
+	&#125;
+	return false;
+&#125;
+int main()&#123;
+	listnode *test&#x3D;creat_list();
+	print(test);
+	cout&lt;&lt;endl;
+	listnode *test1&#x3D;creat_circle(test);
+	&#x2F;&#x2F;cout&lt;&lt;test1-&gt;data&lt;&lt;endl;
+	&#x2F;&#x2F;判断是否有环就是，将链表从头开始访问，同时将访问过的顶点记录来
+	&#x2F;&#x2F;有重复的，就直接返回
+	bool res&#x3D;is_circle(test1-&gt;next);
+	cout&lt;&lt;res&lt;&lt;endl;
+	return 0;
+
+&#125;</code></pre>
+
+<h4 id="删除特定值链表"><a href="#删除特定值链表" class="headerlink" title="删除特定值链表"></a>删除特定值链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode *next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int data):data(data),next(nullptr)&#123;&#125;
+	listnode(int data,struct listnode*next):data(data),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode*l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+&#125;
+listnode * create_list()&#123;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入结点的个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个元素&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+listnode * delete_val(listnode *l,int val)&#123;
+
+	if(l&#x3D;&#x3D;nullptr) return l;&#x2F;&#x2F;空元素
+
+	&#x2F;&#x2F;删除第一个顶点需要考虑到头节点的重新指向
+	while(l!&#x3D;nullptr&amp;&amp;l-&gt;data&#x3D;&#x3D;val)&#123;
+		&#x2F;&#x2F;TODO
+		l&#x3D;l-&gt;next;
+	&#125;&#x2F;&#x2F;这里使用while循环避免了val,val,val,val这种情况
+	&#x2F;&#x2F;删除的不是第一个结点
+	listnode *p_move&#x3D;l;&#x2F;&#x2F;建立一个移动结点
+	while(p_move-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(p_move-&gt;next-&gt;data&#x3D;&#x3D;val)&#123;
+			&#x2F;&#x2F;TODO
+			p_move-&gt;next&#x3D;p_move-&gt;next-&gt;next;
+
+		&#125;else&#123;
+			p_move&#x3D;p_move-&gt;next;
+		&#125;
+	&#125;
+	return l;
+
+&#125;
+
+int main()&#123;
+	listnode *test&#x3D;create_list();
+	test&#x3D;delete_val(test-&gt;next,3);
+	print(test);
+	return 0;
+&#125;
+</code></pre>
+
+<h4 id="删除重复链表结点"><a href="#删除重复链表结点" class="headerlink" title="删除重复链表结点"></a>删除重复链表结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;删除重复链表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode* next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int x):data(x),next(nullptr)&#123;&#125;
+	listnode(int x,struct listnode*next):data(x),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+void print(listnode *l1)&#123;
+	while(l1!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l1-&gt;data&lt;&lt;&quot; &quot;;
+		l1&#x3D;l1-&gt;next;
+	&#125;
+
+&#125;
+listnode * creat_list()&#123;
+	int num;
+	cout&lt;&lt;&quot;请输入链表的个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		&#x2F;&#x2F;TODO
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	print(p_head);
+	cout&lt;&lt;endl;
+	return p_head;
+&#125;
+
+listnode * delete_adjacent(listnode *l1)&#123;
+	if(l1&#x3D;&#x3D;nullptr) return l1;
+	listnode *p_move&#x3D;l1;
+	while(p_move-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		if(p_move-&gt;data&#x3D;&#x3D;p_move-&gt;next-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_move-&gt;next&#x3D;p_move-&gt;next-&gt;next;
+			&#x2F;&#x2F;出现这种next-&gt;data的情况，终止条件需要修改成next!&#x3D;null，避免出现空指针还要去访问数值
+
+
+		&#125;else&#123;
+			p_move&#x3D;p_move-&gt;next;
+		&#125;
+
+	&#125;
+
+	return l1;
+&#125;
+int main()&#123;
+	listnode *test&#x3D;creat_list();
+	listnode *newtest&#x3D;delete_adjacent(test-&gt;next);&#x2F;&#x2F;test-&gt;next直接开始就是输入
+	print(newtest);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="中间链表"><a href="#中间链表" class="headerlink" title="中间链表"></a>中间链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;返回中间链表结点
+&#x2F;&#x2F;设计一个vector&lt;listnode&gt;然后就实现了随机存储
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode *next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int data):data(data),next(nullptr)&#123;&#125;
+	listnode(int data,struct listnode*next):data(data),next(next)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* list;
+typedef vector&lt;listnode*&gt; lisv;
+listnode* create_list()&#123;
+	listnode *p_head&#x3D;new listnode();
+	listnode *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;请输入链表结点的个数&quot;&lt;&lt;endl;
+	int size;
+	cin&gt;&gt;size;
+	int pos&#x3D;1;
+	while(pos&lt;&#x3D;size)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;pos&lt;&lt;&quot;个元素&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		pos++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+listnode * midnode(listnode *l)&#123;
+	lisv vl;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		vl.push_back(l);
+		l&#x3D;l-&gt;next;
+	&#125;
+	return vl[vl.size()&#x2F;2];
+&#125;
+int main()&#123;
+	listnode *test&#x3D;create_list();
+	listnode *res&#x3D;midnode(test-&gt;next);
+	cout&lt;&lt;res-&gt;data&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="保留公共结点"><a href="#保留公共结点" class="headerlink" title="保留公共结点"></a>保留公共结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;创建公共元素，并删除多余结点
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l-&gt;next;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+void dele_get_common(slist&amp;l1,slist&amp;l2)&#123;
+	list_node *p_move1&#x3D;l1-&gt;next;
+	list_node *p_move2&#x3D;l2-&gt;next;
+	list_node *p_move&#x3D;l1;
+	l1-&gt;next&#x3D;nullptr;
+	while(p_move1!&#x3D;nullptr&amp;&amp;p_move2!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(p_move1-&gt;data&lt;p_move2-&gt;data)&#123;
+			list_node *p&#x3D;p_move1;
+			p_move1&#x3D;p_move1-&gt;next;
+			free(p);
+		&#125;
+		else if(p_move1-&gt;data&gt;p_move2-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			list_node *p&#x3D;p_move2;
+			p_move2&#x3D;p_move2-&gt;next;
+			free(p);
+		&#125;
+		else&#123;
+			p_move-&gt;next&#x3D;p_move1;
+			p_move1&#x3D;p_move1-&gt;next;
+			list_node *p&#x3D;p_move2;
+			p_move2&#x3D;p_move2-&gt;next;
+			free(p);
+			p_move&#x3D;p_move-&gt;next;&#x2F;&#x2F;始终指向最后一个结点尾插法
+			&#x2F;&#x2F;删除一个留一个
+		&#125;
+	&#125;
+	&#x2F;&#x2F;将多余的结点删除
+	while(p_move2!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		list_node *p&#x3D;p_move2;
+		p_move2&#x3D;p_move2-&gt;next;
+		free(p);
+	&#125;
+	while(p_move1!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		list_node *p&#x3D;p_move1;
+		p_move1&#x3D;p_move1-&gt;next;
+		free(p);
+	&#125;
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	display(l1);
+	slist l2&#x3D;create();
+	display(l2);
+	dele_get_common(l1,l2);
+	display(l1);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="链表暴力匹配"><a href="#链表暴力匹配" class="headerlink" title="链表暴力匹配"></a>链表暴力匹配</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;暴力算法模式匹配链表结构
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+bool is_son(slist&amp;dad,slist&amp;son)&#123;
+	list_node *p_move_dad&#x3D;dad-&gt;next;
+	list_node *p_move_son&#x3D;son-&gt;next;
+	list_node *p_move_dadpre&#x3D;dad;
+	list_node *p_move_sonpre&#x3D;p_move_son;
+	while(p_move_dad!&#x3D;nullptr&amp;&amp;p_move_son!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(p_move_son-&gt;data&#x3D;&#x3D;p_move_dad-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_move_dadpre&#x3D;p_move_dad;
+			p_move_dad&#x3D;p_move_dad-&gt;next;
+			p_move_son&#x3D;p_move_son-&gt;next;
+		&#125;else&#123;
+			&#x2F;&#x2F;儿子回溯到第一个
+			p_move_son&#x3D;p_move_sonpre;
+			&#x2F;&#x2F;父亲回溯到上次结点的下一个
+			p_move_dadpre&#x3D;p_move_dadpre-&gt;next;
+			p_move_dad&#x3D;p_move_dadpre-&gt;next;
+		&#125;
+	&#125;
+	&#x2F;&#x2F;儿子先结束，说明是，否则不是
+	if(p_move_son&#x3D;&#x3D;nullptr) return true;
+	else&#123;return false;&#125;
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	display(l1);
+	slist l2&#x3D;create();
+	display(l2);
+	cout&lt;&lt;is_son(l1,l2);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="链表插入排序"><a href="#链表插入排序" class="headerlink" title="链表插入排序"></a>链表插入排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;单链表插入排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node* next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	return;
+&#125;
+slist create()&#123;
+	int num;
+	cout&lt;&lt;&quot;请输入链表结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+void insert_sort(slist&amp;l)&#123;
+	&#x2F;&#x2F;定义三个指针，新链表一个，旧链表一个指向当前要准备插入的，一个指向其后继
+	list_node *p&#x3D;l-&gt;next;&#x2F;&#x2F;拿第一个元素做有序序列，p和p之前都是有序序列
+	list_node *r&#x3D;p-&gt;next;&#x2F;&#x2F;指向p的后继，便于往后移动，
+	list_node *f&#x3D;l;&#x2F;&#x2F;指向头节点，每次从头节点开始遍历，查找位置，确定位置只能next-&gt;data,必须头节点开始
+	&#x2F;&#x2F;开始排序从第二个元素开始
+	p-&gt;next&#x3D;nullptr;
+	p&#x3D;r;
+	while(p!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;查找位置
+		r&#x3D;p-&gt;next;&#x2F;&#x2F;记录下一个结点，便于后移
+
+		while(f-&gt;next!&#x3D;nullptr&amp;&amp;f-&gt;next-&gt;data&lt;p-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			&#x2F;&#x2F;必须把f-&gt;next!&#x3D;nullptr放在前面，避免访问空指针
+			f&#x3D;f-&gt;next;
+		&#125;
+		p-&gt;next&#x3D;f-&gt;next;
+		f-&gt;next&#x3D;p;
+		p&#x3D;r;
+		f&#x3D;l;&#x2F;&#x2F;f回溯
+	&#125;
+&#125;
+int main()&#123;
+	slist l&#x3D;create();
+	display(l-&gt;next);
+	insert_sort(l);
+	cout&lt;&lt;endl;
+	display(l-&gt;next);
+	return 0;
+&#125;
+
+&#x2F;&#x2F;单链表插入排序改版
+&#x2F;&#x2F;单链表插入排序不同的是，每次查找都是从前往后找，因为没有前驱指针
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct listnode&#123;
+	int data;
+	struct listnode *next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+	listnode(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct listnode* slist;
+void create(slist&amp;l)&#123;
+	listnode *p_move&#x3D;l;
+	cout&lt;&lt;&quot;输入个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;输入结点&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		listnode *p_new&#x3D;new listnode(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+&#125;
+void display(slist l)&#123;
+	while(l!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;l-&gt;data&lt;&lt;&quot; &quot;;
+		l&#x3D;l-&gt;next;
+	&#125;
+&#125;
+&#x2F;&#x2F;插入排序
+void insertsort(slist&amp;l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+
+	listnode *p_head&#x3D;l;
+
+	listnode *p_move&#x3D;l-&gt;next;
+	listnode *p_movenext&#x3D;p_move-&gt;next;
+
+	p_move-&gt;next&#x3D;nullptr;&#x2F;&#x2F;防止出现环链
+	p_move&#x3D;p_movenext;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO从第二个元素开始查找位置
+		p_movenext&#x3D;p_move-&gt;next;
+		p_head&#x3D;l;
+		while(p_head-&gt;next!&#x3D;nullptr&amp;&amp;p_head-&gt;next-&gt;data&lt;p_move-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_head&#x3D;p_head-&gt;next;
+		&#125;
+		p_move-&gt;next&#x3D;p_head-&gt;next;
+		p_head-&gt;next&#x3D;p_move;
+
+
+		p_move&#x3D;p_movenext;
+	&#125;
+&#125;
+int main()&#123;
+	slist l&#x3D;new listnode();
+	create(l);
+	display(l-&gt;next);
+	insertsort(l);
+	cout&lt;&lt;endl;
+	display(l-&gt;next);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="链表查找倒数第k个元素"><a href="#链表查找倒数第k个元素" class="headerlink" title="链表查找倒数第k个元素"></a>链表查找倒数第k个元素</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;单链表找到倒数第k个元素
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node* next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l-&gt;next;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个结点&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+int find_k(slist&amp;l,int k)&#123;
+	list_node *p&#x3D;l-&gt;next;
+	list_node *q&#x3D;l-&gt;next;
+	int i&#x3D;1;
+	while(p-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(i&lt;k)&#123;
+			&#x2F;&#x2F;TODO
+			p&#x3D;p-&gt;next;
+			i++;
+		&#125;else&#123;
+
+			p&#x3D;p-&gt;next;
+			q&#x3D;q-&gt;next;
+			i++;
+		&#125;
+	&#125;
+	if(i&lt;&#x3D;k)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;
+	return q-&gt;data;
+&#125;
+int  main()&#123;
+	cout&lt;&lt;&quot;输入k&quot;&lt;&lt;endl;
+	int k;
+	cin&gt;&gt;k;
+	slist l&#x3D;create();
+	display(l);
+	cout&lt;&lt;endl;
+	cout&lt;&lt;find_k(l,k)&lt;&lt;endl;
+&#125;</code></pre>
+
+<h4 id="链表删除唯一最小值"><a href="#链表删除唯一最小值" class="headerlink" title="链表删除唯一最小值"></a>链表删除唯一最小值</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;单链表删除最小值（唯一）
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(list_node *l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	cout&lt;&lt;&quot;请输入结点个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+void delete_min(slist&amp;l)&#123;
+	list_node *min_node&#x3D;l-&gt;next;
+	list_node *min_front&#x3D;l;
+	list_node *p_move&#x3D;l-&gt;next;
+	list_node *p_move_front&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(p_move-&gt;data&lt;min_node-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			min_node&#x3D;p_move;
+			min_front&#x3D;p_move_front;
+		&#125;
+		p_move_front&#x3D;p_move;
+		p_move&#x3D;p_move-&gt;next;
+
+	&#125;
+	&#x2F;&#x2F;删除最小值结点
+	min_front-&gt;next&#x3D;min_node-&gt;next;
+	free(min_node);
+&#125;
+int main()&#123;
+	slist l&#x3D;create();
+	display(l);
+	delete_min(l);
+	display(l-&gt;next);
+&#125;</code></pre>
+
+<h4 id="链表递增输出"><a href="#链表递增输出" class="headerlink" title="链表递增输出"></a>链表递增输出</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递增输出结点，并将空间释放，与单链表删除最小值相同，只不过多了层循环和输出
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node* next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(list_node*l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	cout&lt;&lt;&quot;请输入创建结点个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个值&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+void delete_and_out(slist&amp;l)&#123;
+	while(l-&gt;next!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;只要还有结点，l-&gt;next就不是空，这是大循环
+		list_node *p_move&#x3D;l-&gt;next;
+		list_node *p_move_pre&#x3D;l;
+		list_node *p_min_move&#x3D;l-&gt;next;
+		list_node *p_min_pre&#x3D;l;
+		while(p_move!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			if(p_move-&gt;data&lt;p_min_move-&gt;data)&#123;
+				&#x2F;&#x2F;TODO
+				p_min_move&#x3D;p_move;
+				p_min_pre&#x3D;p_move_pre;
+				&#x2F;&#x2F;找到最小值后，移动写不写都行，因为下一次比较，肯定执行else
+				&#x2F;&#x2F;p_move_pre&#x3D;p_move;
+				&#x2F;&#x2F;p_move&#x3D;p_move-&gt;next;
+			&#125;else&#123;
+				p_move_pre&#x3D;p_move;
+				p_move&#x3D;p_move-&gt;next;
+			&#125;
+		&#125;
+		cout&lt;&lt;p_min_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_min_pre-&gt;next&#x3D;p_min_move-&gt;next;
+		free(p_min_move);
+	&#125;
+
+&#125;
+int main()&#123;
+	slist l&#x3D;create();
+	display(l);
+	delete_and_out(l);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="公共元素创建链表"><a href="#公共元素创建链表" class="headerlink" title="公共元素创建链表"></a>公共元素创建链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;公共元素创建链表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node* next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	int num;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+slist get_common(slist&amp;l1,slist&amp;l2)&#123;
+	list_node *p_move1&#x3D;l1-&gt;next;
+	list_node *p_move2&#x3D;l2-&gt;next;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	while(p_move1!&#x3D;nullptr&amp;&amp;p_move2!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;有顺序，所以每次小的先移动
+		if(p_move1-&gt;data&lt;p_move2-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_move1&#x3D;p_move1-&gt;next;
+		&#125;
+		else if(p_move1-&gt;data&gt;p_move2-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p_move2&#x3D;p_move2-&gt;next;
+		&#125;
+		else&#123;
+			list_node *p_new&#x3D;new list_node(p_move1-&gt;data);
+			p_move-&gt;next&#x3D;p_new;
+			p_move&#x3D;p_move-&gt;next;
+			&#x2F;&#x2F;同时两指针同时后移
+			p_move1&#x3D;p_move1-&gt;next;
+			p_move2&#x3D;p_move2-&gt;next;
+		&#125;
+	&#125;
+	return p_head;
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	display(l1);
+	slist l2&#x3D;create();
+	display(l2);
+	slist l3&#x3D;get_common(l1,l2);
+	display(l3);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="合并循环链表"><a href="#合并循环链表" class="headerlink" title="合并循环链表"></a>合并循环链表</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;合并两个循环单链表
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void diplay(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l-&gt;next;
+	while(p_move!&#x3D;l)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;p_head;
+	return p_head;
+&#125;
+void merge_list(slist&amp;l1,slist&amp;l2)&#123;
+	list_node *p_move1&#x3D;l1-&gt;next;
+	while(p_move1-&gt;next!&#x3D;l1)&#123;
+		&#x2F;&#x2F;TODO
+		p_move1&#x3D;p_move1-&gt;next;
+	&#125;
+	p_move1-&gt;next&#x3D;l2-&gt;next;
+	list_node *p_move2&#x3D;l2-&gt;next;
+	while(p_move2-&gt;next!&#x3D;l2)&#123;
+		&#x2F;&#x2F;TODO
+		p_move2&#x3D;p_move2-&gt;next;
+	&#125;
+	free(l2);
+	p_move2-&gt;next&#x3D;l1;
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	slist l2&#x3D;create();
+	merge_list(l1,l2);
+	diplay(l1);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;头插法，递减序列
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return ;
+	&#125;
+	list_node *p_move&#x3D;l-&gt;next;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	int num;
+	cout&lt;&lt;&quot;请输入个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		int data;
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head;
+&#125;
+void merge_reverse(slist&amp;l1,slist&amp;l2)&#123;
+	list_node *p_move1&#x3D;l1-&gt;next;
+	list_node *p_move2&#x3D;l2-&gt;next;
+	list_node *p1_next,*p2_next;
+	l1-&gt;next&#x3D;nullptr;
+	while(p_move1!&#x3D;nullptr&amp;&amp;p_move2!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(p_move1-&gt;data&lt;p_move2-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p1_next&#x3D;p_move1-&gt;next;
+			p_move1-&gt;next&#x3D;l1-&gt;next;
+			l1-&gt;next&#x3D;p_move1;
+			p_move1&#x3D;p1_next;
+		&#125;else&#123;
+			p2_next&#x3D;p_move2-&gt;next;
+			p_move2-&gt;next&#x3D;l1-&gt;next;
+			l1-&gt;next&#x3D;p_move2;
+			p_move2&#x3D;p2_next;
+		&#125;
+	&#125;
+	&#x2F;&#x2F;最后会有一个剩下
+	if(p_move1!&#x3D;nullptr)&#123;
+		while(p_move1!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			p1_next&#x3D;p_move1-&gt;next;
+			p_move1-&gt;next&#x3D;l1-&gt;next;
+			l1-&gt;next&#x3D;p_move1;
+			p_move1&#x3D;p1_next;
+		&#125;
+
+	&#125;else&#123;
+		while(p_move2!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			p2_next&#x3D;p_move2-&gt;next;
+			p_move2-&gt;next&#x3D;l1-&gt;next;
+			l1-&gt;next&#x3D;p_move2;
+			p_move2&#x3D;p2_next;
+		&#125;
+	&#125;
+	free(l2);
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	slist l2&#x3D;create();
+	display(l1);
+	cout&lt;&lt;endl;
+	display(l2);
+	merge_reverse(l1,l2);
+	cout&lt;&lt;endl;
+	display(l1);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="递归删除结点"><a href="#递归删除结点" class="headerlink" title="递归删除结点"></a>递归删除结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+#define maxsize 100
+using namespace std;
+&#x2F;&#x2F;无头结点可以先头节点创立，然后返回头节点next
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	list_node():data(-1),next(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+void display(list_node *l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l;
+	while(p_move!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+	cout&lt;&lt;endl;
+&#125;
+slist create()&#123;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;请输入第&quot;&lt;&lt;i&lt;&lt;&quot;个值&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		list_node *p_new &#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_move&#x3D;p_move-&gt;next;
+		i++;
+	&#125;
+	p_move-&gt;next&#x3D;nullptr;
+	return p_head-&gt;next;
+&#125;
+void recur_delete_X(slist&amp;l,int x)&#123;
+	&#x2F;&#x2F;递归跳出条件写在最前面
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	&#x2F;&#x2F;递归操作
+	if(l-&gt;data&#x3D;&#x3D;x)&#123;
+		&#x2F;&#x2F;TODO
+		list_node *p&#x3D;l;
+		l&#x3D;l-&gt;next;
+		free(p);
+		recur_delete_X(l-&gt;next,x);&#x2F;&#x2F;递归下一层
+	&#125;else&#123;
+		recur_delete_X(l-&gt;next,x);&#x2F;&#x2F;递归下一层
+	&#125;
+
+&#125;
+int main()&#123;
+	list_node *l&#x3D;create();
+	display(l);
+	recur_delete_X(l,4);
+	display(l);
+&#125;</code></pre>
+
+<h4 id="循环链表对称"><a href="#循环链表对称" class="headerlink" title="循环链表对称"></a>循环链表对称</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;循环双链表表是否对称
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct list_node&#123;
+	int data;
+	struct list_node *next;
+	struct list_node *prior;
+	list_node():data(-1),next(nullptr),prior(nullptr)&#123;&#125;
+	list_node(int x):data(x),next(nullptr),prior(nullptr)&#123;&#125;
+&#125;;
+typedef struct list_node list_node;
+typedef struct list_node* slist;
+&#x2F;&#x2F;打印循环双链表
+void display(slist l)&#123;
+	if(l&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	list_node *p_move&#x3D;l-&gt;next;
+	while(p_move!&#x3D;l)&#123;
+		&#x2F;&#x2F;TODO,当指针循环到头结点，说明遍历完
+		cout&lt;&lt;p_move-&gt;data&lt;&lt;&quot; &quot;;
+		p_move&#x3D;p_move-&gt;next;
+	&#125;
+&#125;
+slist create()&#123;
+	list_node *p_head&#x3D;new list_node();
+	list_node *p_move&#x3D;p_head;
+	&#x2F;&#x2F;循环双链表头节点初始化
+	p_head-&gt;next&#x3D;p_head;
+	p_head-&gt;prior&#x3D;p_head;
+	int num;
+	cout&lt;&lt;&quot;输入结点个数&quot;&lt;&lt;endl;
+	cin&gt;&gt;num;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;num)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;输入第&quot;&lt;&lt;i&lt;&lt;&quot;个数&quot;&lt;&lt;endl;
+		int data;
+		cin&gt;&gt;data;
+		list_node *p_new&#x3D;new list_node(data);
+		p_move-&gt;next&#x3D;p_new;
+		p_new-&gt;prior&#x3D;p_move;
+		p_new-&gt;next&#x3D;p_head;
+		p_head-&gt;prior&#x3D;p_new;
+		p_move&#x3D;p_new;
+		i++;
+	&#125;
+	return p_head;
+&#125;
+bool is_symmetry(slist&amp;l)&#123;
+	list_node *p&#x3D;l-&gt;next;&#x2F;&#x2F;第一个结点
+	cout&lt;&lt;p-&gt;data&lt;&lt;endl;
+	list_node *q&#x3D;l-&gt;prior;&#x2F;&#x2F;最后一个结点
+	cout&lt;&lt;q-&gt;data&lt;&lt;endl;
+	while(p!&#x3D;q&amp;&amp;q-&gt;next!&#x3D;p)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;p!&#x3D;q,奇数截止
+		&#x2F;&#x2F;q-&gt;next!&#x3D;p，偶数截止
+		if(p-&gt;data&#x3D;&#x3D;q-&gt;data)&#123;
+			&#x2F;&#x2F;TODO
+			p&#x3D;p-&gt;next;
+			q&#x3D;q-&gt;prior;
+		&#125;else&#123;
+			return false;
+		&#125;
+	&#125;
+	return true;
+&#125;
+int main()&#123;
+	slist l1&#x3D;create();
+	display(l1);
+	cout&lt;&lt;is_symmetry(l1);
+	return 0;
+&#125;</code></pre>
+
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><h4 id="单调栈实现下一个最大元素"><a href="#单调栈实现下一个最大元素" class="headerlink" title="单调栈实现下一个最大元素"></a>单调栈实现下一个最大元素</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;单调栈只能实现下一个更大的元素
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; arr;
+arr next_max(arr&amp;num1,arr&amp;num2)&#123;
+	stack &lt;int&gt;sta;
+	unordered_map&lt;int,int&gt;next_store;
+	for(int i&#x3D;0;i&lt;num2.size();i++)&#123;
+		&#x2F;&#x2F;TODO
+		while(!(sta.empty())&amp;&amp;sta.top()&lt;num2[i])&#123;
+			&#x2F;&#x2F;TODO
+			next_store[sta.top()]&#x3D;num2[i];
+			sta.pop();
+		&#125;
+		&#x2F;&#x2F;空的时候，入栈，不为空，但是小于栈顶，也入栈
+		sta.push(num2[i]);
+	&#125;
+	&#x2F;&#x2F;剩下的就只是-1了；
+	while(!sta.empty())&#123;
+		&#x2F;&#x2F;TODO
+		next_store[sta.top()]&#x3D;-1;
+		sta.pop();
+	&#125;
+	arr res;
+	for(int i&#x3D;0;i&lt;num1.size();i++)&#123;
+		&#x2F;&#x2F;TODO
+		res.push_back(next_store[num1[i]]);
+	&#125;
+	for(int num:res)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return res;
+&#125;
+int main()&#123;
+	arr num1&#123;4,1,2&#125;;
+	arr num2&#123;1,3,4,2&#125;;
+	arr res&#x3D;next_max(num1,num2);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="二叉树非递归后序遍历"><a href="#二叉树非递归后序遍历" class="headerlink" title="二叉树非递归后序遍历"></a>二叉树非递归后序遍历</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+typedef vector&lt;int&gt; arr;
+void create_tree(tree&amp;root)&#123;
+	string ch&#x3D;&quot;&quot;;
+	cout&lt;&lt;&quot;请按先序输入，以#表示空&quot;&lt;&lt;endl;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+	&#125;else&#123;
+		root&#x3D;new treenode(stoi(ch));
+		&#x2F;&#x2F;cout&lt;&lt;root-&gt;data&lt;&lt;endl;
+		create_tree(root-&gt;left);
+		create_tree(root-&gt;right);
+	&#125;
+
+&#125;
+void post_order(tree&amp;root,arr&amp;a)&#123;
+	stack&lt;treenode*&gt;stree;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	while(!stree.empty()||root!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		while(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			a.push_back(root-&gt;data);
+			stree.push(root);
+			root&#x3D;root-&gt;right;
+		&#125;
+		&#x2F;&#x2F;当右子树访问到最后
+		root&#x3D;stree.top();
+		stree.pop();
+		root&#x3D;root-&gt;left;
+	&#125;
+
+
+
+&#125;
+int main()&#123;
+	treenode *root;
+	create_tree(root);
+	arr a;
+
+	post_order(root,a);
+	reverse(a.begin(),a.end());
+	for(int num:a)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="二叉树非递归先序遍历"><a href="#二叉树非递归先序遍历" class="headerlink" title="二叉树非递归先序遍历"></a>二叉树非递归先序遍历</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode* left;
+	struct treenode* right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data,struct treenode*left,struct treenode*right):data(data),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+typedef vector&lt;int&gt; arr;
+&#x2F;&#x2F;因为二叉树没有头节点，所以创造时，必须传入参数
+void create_tree(tree&amp;root)&#123;
+	string ch&#x3D;&quot;&quot;;
+	cout&lt;&lt;&quot;请输入元素按先序序列,#表示空&quot;&lt;&lt;endl;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;&#x2F;&#x2F;空，就把结点设成空
+	&#125;else&#123;
+		root&#x3D;new treenode(stoi(ch));
+		create_tree(root-&gt;left);
+		create_tree(root-&gt;right);
+	&#125;
+
+	return ;
+
+
+&#125;
+void pre_order(tree&amp;root,arr&amp;a)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		return;
+	&#125;
+	stack&lt;treenode*&gt; stree;
+	while(!stree.empty()||root!&#x3D;nullptr)&#123;
+		while(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			a.push_back(root-&gt;data);
+			stree.push(root);
+			root&#x3D;root-&gt;left;
+		&#125;
+		root&#x3D;stree.top();
+		stree.pop();
+		root&#x3D;root-&gt;right;
+		
+	&#125;
+&#125;
+int main()&#123;
+	treenode *root&#x3D;new treenode();
+	create_tree(root);
+	arr a;
+	pre_order(root,a);
+	for(int num:a)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+</code></pre>
+
+<h4 id="二叉树非递归中序遍历"><a href="#二叉树非递归中序遍历" class="headerlink" title="二叉树非递归中序遍历"></a>二叉树非递归中序遍历</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二叉树的非递归中序遍历
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data,struct treenode*left,struct treenode*right):data(data),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+typedef vector&lt;int&gt; arr;
+void create_tree(tree &amp;node)&#123;
+	string ch;
+	cout&lt;&lt;&quot;请输入元素，输入#表示空,按先序顺序输入&quot;&lt;&lt;endl;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		node&#x3D;nullptr;
+	&#125;else&#123;
+		node&#x3D;new treenode(stoi(ch));
+		create_tree(node-&gt;left);
+		create_tree(node-&gt;right);
+	&#125;
+
+&#125;
+void inorder(tree&amp;root,arr&amp;a)&#123;
+	stack&lt;treenode*&gt;sta;
+	while(root!&#x3D;nullptr||!sta.empty())&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;root!&#x3D;null是压栈，sta.empty是弹栈时用的判断条件
+		while(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			sta.push(root);
+			root&#x3D;root-&gt;left;
+		&#125;
+		&#x2F;&#x2F;此时root指向最左边的子节点（空），开始弹栈
+		root&#x3D;sta.top();
+		sta.pop();
+		a.push_back(root-&gt;data);
+		root&#x3D;root-&gt;right;
+	&#125;
+&#125;
+int main()&#123;
+	treenode *root&#x3D;new treenode();
+	create_tree(root);
+	arr a;
+	inorder(root,a);
+	for(int num:a)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;</code></pre>
+
+<h4 id="括号匹配"><a href="#括号匹配" class="headerlink" title="括号匹配"></a>括号匹配</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;&#x2F;括号匹配
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+bool is_vaild(string s)&#123;
+	stack&lt;char&gt;sta;
+	for(char ch : s)&#123;
+		if(ch&#x3D;&#x3D;&#39;&#123;&#39;||ch&#x3D;&#x3D;&#39;(&#39;||ch&#x3D;&#x3D;&#39;[&#39;)&#123;
+			&#x2F;&#x2F;TODO
+			sta.push(ch);
+		&#125;else&#123;
+			if((ch&#x3D;&#x3D;&#39;&#125;&#39;&amp;&amp;sta.top()&#x3D;&#x3D;&#39;&#123;&#39;)||(ch&#x3D;&#x3D;&#39;]&#39;&amp;&amp;sta.top()&#x3D;&#x3D;&#39;[&#39;)||(ch&#x3D;&#x3D;&#39;)&#39;&amp;&amp;sta.top()&#x3D;&#x3D;&#39;(&#39;))&#123;
+				&#x2F;&#x2F;TODO
+				sta.pop();
+			&#125;else&#123;
+				return false;
+			&#125;
+		&#125;
+	&#125;
+	return sta.empty();
+&#125;
+int main()&#123;
+	string s;
+	cout&lt;&lt;&quot;请输入括号&quot;&lt;&lt;endl;
+	cin&gt;&gt;s;
+	bool res&#x3D;is_vaild(s);
+	cout&lt;&lt;res&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="最小栈的实现"><a href="#最小栈的实现" class="headerlink" title="最小栈的实现"></a>最小栈的实现</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;双栈实现最小栈，每次压栈或出栈时，最小栈也对应相应的入栈和出栈
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+class min_stack &#123;
+public:
+	stack&lt;int&gt;st;
+	stack&lt;int&gt;min_st;
+	bool pushs(int x)&#123;
+		if(st.empty())&#123;
+			st.push(x);
+			min_st.push(x);
+			return true;
+		&#125;else&#123;
+			st.push(x);
+			int minpop&#x3D;min(min_st.top(),x);
+			min_st.push(minpop);
+			return true;
+		&#125;
+		return false;
+	&#125;
+	bool pops()&#123;
+		if(st.empty())&#123;
+			&#x2F;&#x2F;TODO
+			return false;
+		&#125;
+		else&#123;
+			st.pop();
+			min_st.pop();
+			return true;
+		&#125;
+	&#125;
+	int top()&#123;
+		return st.top();
+	&#125;
+	int get_min()&#123;
+		return min_st.top();
+	&#125;
+&#125;;
+int main()&#123;
+	min_stack s;
+	s.pushs(1);
+	s.pushs(-1);
+	s.pushs(3);
+	s.pops();
+	s.pops();
+	cout&lt;&lt;s.get_min()&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="双栈实现队列"><a href="#双栈实现队列" class="headerlink" title="双栈实现队列"></a>双栈实现队列</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;双栈实现队列
+&#x2F;*一个栈用来入队，一个栈用来出队，
+入队时，将元素压入入栈
+出队，如果出栈没有元素，就将入栈的元素全部弹出，然后压入出栈，弹出出栈的栈顶元素
+如果出栈有元素，那么直接弹出出栈的栈顶元素
+队列满：当入栈不能压栈，同时出栈还有元素，就说明队列已满
+队列空，两个栈内都没有元素，说明整个队列都没有元素
+*&#x2F;
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxsize 100
+struct my_stack&#123;
+	int data[maxsize];
+	int top;
+	my_stack():top(-1)&#123;&#125;
+&#125;;
+typedef struct my_stack my_stack;
+bool is_full(my_stack s)&#123;
+	if(s.top&#x3D;&#x3D;maxsize-1)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	return false;
+&#125;
+bool s_is_empty(my_stack s)&#123;
+	if(s.top&lt;0)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	return false;
+&#125;
+bool push(my_stack&amp;s,int x)&#123;
+	if(is_full(s))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	s.top++;
+	s.data[s.top]&#x3D;x;
+	return true;
+&#125;
+bool pop(my_stack&amp;s,int&amp;x)&#123;
+	if(s_is_empty(s))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	x&#x3D;s.data[s.top];
+	s.top--;
+	return true;
+&#125;
+struct dup_stack_que&#123;
+	my_stack in;
+	my_stack out;
+&#125;;
+typedef struct dup_stack_que dup_stack_que;
+bool que_is_empty(dup_stack_que q)&#123;
+	return s_is_empty(q.in)&amp;&amp;s_is_empty(q.out);
+&#125;
+bool que_is_full(dup_stack_que q)&#123;
+	return is_full(q.in)&amp;&amp;(!s_is_empty(q.out));
+&#125;
+bool push_que(dup_stack_que&amp;q,int x)&#123;
+	if(que_is_full(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	push(q.in,x);
+	return true;
+&#125;
+bool pop_que(dup_stack_que&amp;q,int&amp;x)&#123;
+	if(que_is_empty(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	if(s_is_empty(q.out))&#123;
+		&#x2F;&#x2F;TODO
+		int temp;
+		while(!s_is_empty(q.in))&#123;
+			&#x2F;&#x2F;TODO
+			pop(q.in,temp);
+			push(q.out,temp);
+		&#125;
+		pop(q.out,x);
+	&#125;else&#123;
+		pop(q.out,x);
+	&#125;
+
+	return true;
+&#125;
+int main()&#123;
+	dup_stack_que q;
+	int i&#x3D;1;
+	while(i&lt;&#x3D;5)&#123;
+		&#x2F;&#x2F;TODO
+		push_que(q,i);
+		i++;
+	&#125;
+	while(!que_is_empty(q))&#123;
+		&#x2F;&#x2F;TODO
+		pop_que(q,i);
+		cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+	&#125;
+
+	return 0;
+&#125;</code></pre>
+
+<h4 id="栈实现非递归"><a href="#栈实现非递归" class="headerlink" title="栈实现非递归"></a>栈实现非递归</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;栈实现非递归
+&#x2F;*首先，这里用的是栈的思想，结构体可能不是类似栈的结构
+首先结构体储存在那一层n,每一次层计算的结果
+最上一层记录的是第0层，然后逐层往下，赋值每一层是入栈过程
+计算每一层是出栈过程
+*&#x2F;
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxsize 100
+struct mystack&#123;
+	int n;
+	double pnx;
+&#125;;
+typedef struct mystack mystack;
+double cac(int n,double x)&#123;
+	int top&#x3D;-1,i;
+	double f1&#x3D;1,f2&#x3D;2*x;
+	mystack st[maxsize];
+	for(i&#x3D;n;i&gt;&#x3D;2;i--)&#123;
+		&#x2F;&#x2F;TODO
+		top++;
+		st[top].n&#x3D;i;&#x2F;&#x2F;入栈操作，把第几层标上，由下到上
+	&#125;
+	&#x2F;&#x2F;出栈操作开始计算,由上到下
+	while(top&gt;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		st[top].pnx&#x3D;2*x*f2-2*(st[top].n-1)*f1;
+		&#x2F;&#x2F;为下一层做准备
+		f1&#x3D;f2;
+		f2&#x3D;st[top].pnx;
+		top--;
+	&#125;
+	if(n&#x3D;&#x3D;0) return f1;
+	return f2;
+&#125;
+int main()&#123;
+	double x&#x3D;5;
+	int n&#x3D;3;
+	cout&lt;&lt;cac(n,x)&lt;&lt;endl;
+&#125;
+</code></pre>
+
+
+
+<h4 id="后缀表达式计算"><a href="#后缀表达式计算" class="headerlink" title="后缀表达式计算"></a>后缀表达式计算</h4><pre class="language-c++" data-language="c++"><code class="language-c++">bool isnumber(string str)&#123;
+        return !(str&#x3D;&#x3D;&quot;+&quot;||str&#x3D;&#x3D;&quot;-&quot;||str&#x3D;&#x3D;&quot;*&quot;||str&#x3D;&#x3D;&quot;&#x2F;&quot;);
+    &#125;
+    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;
+        stack&lt;int&gt; stk;
+        int i&#x3D;0;
+        while(i&lt;tokens.size())&#123;
+            if(isnumber(tokens[i]))&#123;
+                stk.push(atoi(tokens[i].c_str()));
+            &#125;else&#123;
+                int right&#x3D;stk.top();
+                stk.pop();
+                int left&#x3D;stk.top();
+                stk.pop();
+                int ans&#x3D;0;
+                switch (tokens[i][0])&#123;
+                    case &#39;+&#39;:&#123;ans&#x3D;left+right;break;&#125;
+                    case &#39;-&#39;:&#123;ans&#x3D;left-right;break;&#125;
+                    case &#39;*&#39;:&#123;ans&#x3D;left*right;break;&#125;
+                    case &#39;&#x2F;&#39;:&#123;ans&#x3D;left&#x2F;right;break;&#125;
+                &#125;
+                stk.push(ans);
+            &#125;
+            
+            i++;
+        &#125;
+        return stk.top();
+    &#125;</code></pre>
+
+
+
+<h4 id="删除无效括号"><a href="#删除无效括号" class="headerlink" title="删除无效括号"></a>删除无效括号</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;一个栈存储左括号，一个栈记录左括号的位置，
+    
+string minRemoveToMakeValid(string s) &#123;
+        stack&lt;char&gt; cs;
+        stack&lt;int&gt; pos;
+        int i&#x3D;0;
+        while(i&lt;s.size())&#123;
+            if(s[i]&#x3D;&#x3D;&#39;(&#39;)&#123;
+                cs.push(s[i]);
+                pos.push(i);
+                i++;
+            &#125;else if(s[i]&#x3D;&#x3D;&#39;)&#39;)&#123;
+                if(cs.empty())&#123;
+                    s.erase(s.begin()+i);&#x2F;&#x2F;不满足的符号删除
+                    &#x2F;&#x2F;erase删除后会自动补充,不用i++
+                &#125;else&#123;
+                    cs.pop();
+                    pos.pop();
+                    i++;
+                &#125;
+                
+            &#125;else&#123;i++;&#125;
+        &#125;
+        &#x2F;&#x2F;如果还有多余的左括号
+        while(!pos.empty())&#123;
+            s.erase(s.begin()+pos.top());
+            pos.pop();
+        &#125;
+        return s;
+
+    &#125;</code></pre>
+
+
+
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; arr;
+class circle_queue &#123;
+
+public:
+	arr a;
+	int front;
+	int rear;
+	int max_size;
+	int temp_size;
+	&#x2F;&#x2F;初始化
+	circle_queue(int k):a(k),max_size(k),temp_size(0),front(0),rear(0)&#123;&#125;
+	bool whether_empty()&#123;
+		return temp_size&#x3D;&#x3D;0;
+	&#125;
+	bool whether_full()&#123;
+		return temp_size&#x3D;&#x3D;max_size;
+	&#125;
+	bool push_queue(int data)&#123;
+		if(whether_full())&#123;return false;&#125;
+		a[rear]&#x3D;data;
+		rear&#x3D;(rear+1)%max_size;
+		temp_size++;
+		return true;
+	&#125;
+	bool pop_queue()&#123;
+		if(whether_empty())&#123;
+			return false;
+		&#125;
+		front&#x3D;(front+1)%max_size;
+		temp_size--;
+		return true;
+	&#125;
+	int get_front()&#123;
+		if(whether_empty())&#123;
+			return -1;
+		&#125;
+		return a[front];
+	&#125;
+	int get_rear()&#123;
+		if(whether_empty())&#123;
+			&#x2F;&#x2F;TODO
+			return -1;
+		&#125;
+		return a[(rear-1+max_size)%max_size];
+	&#125;
+&#125;;
+int main()&#123;
+	circle_queue q(5);
+	q.push_queue(1);
+	q.push_queue(2);
+	cout&lt;&lt;q.get_front();
+	return 0;
+&#125;</code></pre>
+
+<h4 id="双端循环队列"><a href="#双端循环队列" class="headerlink" title="双端循环队列"></a>双端循环队列</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设计循环双端队列,front之后和rear之后是可以确定的，不用加长度取模，其余需要
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; vet;
+class circle_db_queue &#123;
+private:
+		int front;
+		int rear;
+		vet que;
+		int max_size;
+		int temp_size;
+public:
+	circle_db_queue(int k):que(k+1),front(0),rear(0),max_size(k+1),temp_size(0)&#123;&#125;
+	bool whether_full()&#123;
+		return (rear+1)%max_size&#x3D;&#x3D;front;
+	&#125;
+	bool whether_empty()&#123;return front&#x3D;&#x3D;rear;&#125;
+	bool push_front(int data)&#123;
+		if(whether_full())&#123;
+			return false;
+		&#125;
+		front--;
+		front&#x3D;(front+max_size)%max_size;
+		que[front]&#x3D;data;
+		temp_size++;
+		return true;
+	&#125;
+	bool push_rear(int data)&#123;
+		if(whether_full())&#123;
+			&#x2F;&#x2F;TODO
+			return false;
+		&#125;
+		que[rear]&#x3D;data;
+		rear++;
+		rear&#x3D;(rear)%max_size;
+		temp_size++;
+		return true;
+	&#125;
+	bool pop_front()&#123;
+		if(whether_empty())&#123;
+			&#x2F;&#x2F;TODO
+			return false;
+		&#125;
+		front&#x3D;(front+1)%max_size;
+		return true;
+
+	&#125;
+	bool pop_rear()&#123;
+		if(whether_empty())&#123;
+			&#x2F;&#x2F;TODO
+			return false;
+		&#125;
+		rear--;
+		rear&#x3D;(rear+max_size)%max_size;
+		return true;
+	&#125;
+	int get_front()&#123;
+		if(whether_empty())&#123;
+			&#x2F;&#x2F;TODO
+			return -1;
+		&#125;
+		return que[front];
+	&#125;
+	int get_rear()&#123;
+		if(whether_empty())&#123;
+			&#x2F;&#x2F;TODO
+			return -1;
+		&#125;
+		return que[((rear-1)+max_size)%max_size];
+	&#125;
+&#125;;
+int main()&#123;
+	circle_db_queue duque(5);
+	duque.push_front(1);
+	duque.push_front(2);
+	duque.push_rear(5);
+	duque.push_rear(4);
+	cout&lt;&lt;duque.get_front();
+	cout&lt;&lt;duque.get_rear();
+&#125;</code></pre>
+
+<h4 id="双队列实现栈"><a href="#双队列实现栈" class="headerlink" title="双队列实现栈"></a>双队列实现栈</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;用队列实现栈
+&#x2F;&#x2F;两个队列，主队列实现入栈，出栈，弹栈。访问顶端元素，是否为空
+&#x2F;&#x2F;队列和栈的出来顺序相反，所以，每次加入一个数就需要一个辅助队列进行重新排序一下
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+class stack1 &#123;
+public:
+	queue&lt;int&gt;zhu1;
+	queue&lt;int&gt;fu2;
+	&#x2F;&#x2F;操作主要是根据zhu1队列操作，fu2操作主要是压入新元素来帮助排序
+	int pop()&#123;
+		int res&#x3D;zhu1.front();
+		zhu1.pop();
+		return res;
+	&#125;
+	bool empty()&#123;return zhu1.empty();&#125;
+	int top()&#123;return zhu1.front();&#125;
+	void push(int x)&#123;
+		fu2.push(x);
+		&#x2F;&#x2F;开始从主队列的头指针开始，把元素放新加入的x在后面,最后和主队列交换，始终保证主队列是出栈顺序
+		while(!zhu1.empty())&#123;
+			&#x2F;&#x2F;TODO
+			fu2.push(zhu1.front());
+			zhu1.pop();
+		&#125;
+		swap(zhu1,fu2);
+	&#125;
+&#125;;
+int main()&#123;
+	stack1 s;
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	while(!s.empty())&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;s.pop()&lt;&lt;endl;
+	&#125;
+	return 0;
+&#125;</code></pre>
+
+
+
+<h3 id="串"><a href="#串" class="headerlink" title="串"></a>串</h3><h4 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;KMP算法
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+vector&lt;int&gt; get_next(string t)&#123;
+	int i&#x3D;1,j&#x3D;0;
+	vector&lt;int&gt; next(100);
+	next[1]&#x3D;0;
+	while(i&lt;t.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(j&#x3D;&#x3D;0||t[i]&#x3D;&#x3D;t[j])&#123;
+			&#x2F;&#x2F;TODO
+			i++;
+			j++;
+			next[i]&#x3D;j;
+		&#125;else&#123;
+			j&#x3D;next[j];
+		&#125;
+	&#125;
+	return next;
+&#125;
+int kmp(string s,string t,vector&lt;int&gt; next)&#123;
+	int i&#x3D;1,j&#x3D;1;
+	while(i&lt;s.size()&amp;&amp;j&lt;t.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(j&#x3D;&#x3D;0||s[i]&#x3D;&#x3D;t[j])&#123;
+			&#x2F;&#x2F;TODO
+			i++;
+			j++;
+		&#125;else&#123;
+			j&#x3D;next[j];
+		&#125;
+	&#125;
+	if(j&gt;&#x3D;t.size())&#123;
+		&#x2F;&#x2F;TODO
+		return i-t.size()+1;
+	&#125;else&#123;
+		return 0;
+	&#125;
+&#125;
+int main()&#123;
+	string s&#x3D;&quot;#&quot;;
+	string s1;
+	cout&lt;&lt;&quot;输入总串&quot;&lt;&lt;endl;
+	cin&gt;&gt;s1;
+	s&#x3D;s+s1;
+	cout&lt;&lt;s&lt;&lt;endl;
+	string t&#x3D;&quot;#&quot;;
+	string t1;
+	cout&lt;&lt;&quot;输入模式串&quot;&lt;&lt;endl;
+	cin&gt;&gt;t1;
+	t&#x3D;t+t1;
+	cout&lt;&lt;t&lt;&lt;endl;
+	vector&lt;int&gt; next&#x3D;get_next(t);
+
+	cout&lt;&lt;endl;
+	cout&lt;&lt;kmp(s,t,next);
+&#125;</code></pre>
+
+<h4 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;暴力匹配
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+int match(string s,string t)&#123;
+	int i&#x3D;1,j&#x3D;1,k&#x3D;1;
+	while(i&lt;s.size()&amp;&amp;j&lt;t.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(s[i]&#x3D;&#x3D;t[j])&#123;
+			&#x2F;&#x2F;TODO
+			i++;
+			j++;
+		&#125;else&#123;
+			k++;
+			i&#x3D;k;
+			j&#x3D;1;
+		&#125;
+	&#125;
+	if(j&gt;&#x3D;t.size())&#123;
+		&#x2F;&#x2F;TODO
+		return k;
+	&#125;else&#123;
+		return 0;
+	&#125;
+&#125;
+int main()&#123;
+	cout&lt;&lt;&quot;输入总串&quot;&lt;&lt;endl;
+	string s&#x3D;&quot;#&quot;;
+	string s1;
+	cin&gt;&gt;s1;
+	s&#x3D;s+s1;
+	cout&lt;&lt;s&lt;&lt;endl;
+	cout&lt;&lt;&quot;输入模式串&quot;&lt;&lt;endl;
+	string t&#x3D;&quot;#&quot;;
+	string t1;
+	cin&gt;&gt;t1;
+	t&#x3D;t+t1;
+	cout&lt;&lt;t&lt;&lt;endl;
+	cout&lt;&lt;match(s,t)&lt;&lt;endl;
+&#125;</code></pre>
+
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="二叉树中序遍历"><a href="#二叉树中序遍历" class="headerlink" title="二叉树中序遍历"></a>二叉树中序遍历</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二叉树的中序遍历，递归方法
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode*left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x,struct treenode*left,struct treenode*right):data(x),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void creat(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请按先序遍历输入,#表示空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	root&#x3D;new treenode(stoi(ch));
+	creat(root-&gt;left);
+	creat(root-&gt;right);
+&#125;
+void inorder(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr) return;
+	else&#123;
+		inorder(root-&gt;left);
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+		inorder(root-&gt;right);
+	&#125;
+
+&#125;
+int main()&#123;
+	tree root;
+	creat(root);
+	inorder(root);
+	return 0;
+&#125;
+</code></pre>
+
+<h4 id="二叉树层次遍历"><a href="#二叉树层次遍历" class="headerlink" title="二叉树层次遍历"></a>二叉树层次遍历</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二叉树的层次遍历
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxsize 100
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+struct myque&#123;
+	treenode* data[maxsize];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+bool qu_isempty(myque que)&#123;
+	if(que.f&#x3D;&#x3D;que.r&amp;&amp;que.tag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	return false;
+&#125;
+bool qu_isfull(myque que)&#123;
+	if(que.f&#x3D;&#x3D;que.r&amp;&amp;que.tag&#x3D;&#x3D;1)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	return false;
+&#125;
+bool enque(treenode *&amp;root,myque&amp;q)&#123;
+	if(qu_isfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	q.data[q.r]&#x3D;root;
+	q.r&#x3D;(q.r+1)%maxsize;
+	q.tag&#x3D;1;
+	return true;
+&#125;
+bool outque(treenode *&amp;root,myque&amp;q)&#123;
+	if(qu_isempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	root&#x3D;q.data[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+	q.tag&#x3D;0;
+	return true;
+&#125;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;输入先序序列，#表示为空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(ch);
+		root&#x3D;new treenode(data);
+		create(root-&gt;left);
+		create(root-&gt;right);
+	&#125;
+&#125;
+void level(tree&amp;root)&#123;
+	myque q;
+	enque(root,q);
+	while(!qu_isempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		outque(root,q);
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+		if(root-&gt;left!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			enque(root-&gt;left,q);
+		&#125;
+		if(root-&gt;right!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			enque(root-&gt;right,q);
+		&#125;
+	&#125;
+
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	level(root);
+&#125;</code></pre>
+
+<h4 id="非递归求二叉树深度"><a href="#非递归求二叉树深度" class="headerlink" title="非递归求二叉树深度"></a>非递归求二叉树深度</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;非递归二叉树的深度或者高度,逐层压入，每压完一层，深度加1
+#include&lt;bits&#x2F;stdc++.h&gt;
+#define maxsize 100
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+struct myque&#123;
+	treenode* data[maxsize];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+int volume(myque q)&#123;
+	return (maxsize-(q.f-q.r))%maxsize;
+&#125;
+bool q_isempty(myque q)&#123;
+	return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;0;
+&#125;
+bool q_isfull(myque q)&#123;
+	return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;1;
+&#125;
+bool push(myque&amp;q,tree&amp;root)&#123;
+	if(q_isfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	q.data[q.r]&#x3D;root;
+	q.r&#x3D;(q.r+1)%maxsize;
+	q.tag&#x3D;1;
+	return true;
+&#125;
+bool pop(myque&amp;q,tree&amp;root)&#123;
+	if(q_isempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	root&#x3D;q.data[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+	q.tag&#x3D;0;
+	return true;
+&#125;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序序列输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+int depth(tree&amp;root)&#123;
+	myque q;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return -1;
+	&#125;
+	push(q,root);
+	int level&#x3D;0;
+	while(!q_isempty(q))&#123;
+		int temp&#x3D;volume(q);
+		&#x2F;&#x2F;把当前层的结点依次弹出，然后压入它的孩子结点
+		&#x2F;&#x2F;TODO
+		for(int i&#x3D;0;i&lt;temp;i++)&#123;
+			&#x2F;&#x2F;TODO
+			pop(q,root);
+			if(root-&gt;left!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				push(q,root-&gt;left);
+			&#125;
+			if(root-&gt;right!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				push(q,root-&gt;right);
+			&#125;
+		&#125;
+		level++;
+	&#125;
+	return level;
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	cout&lt;&lt;depth(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="求二叉树宽度"><a href="#求二叉树宽度" class="headerlink" title="求二叉树宽度"></a>求二叉树宽度</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;寻找二叉树的宽度，层次遍历
+#include&lt;bits&#x2F;stdc++.h&gt;
+#define maxsize 100
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+struct myque&#123;
+	treenode* data[maxsize];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+int qsize(myque q)&#123;return (maxsize-(q.f-q.r))%maxsize;&#125;
+bool q_isfull(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;1;&#125;
+bool q_isempty(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;0;&#125;
+bool push(myque&amp;q,tree&amp;root)&#123;
+	if(q_isfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	q.data[q.r]&#x3D;root;
+	q.r&#x3D;(q.r+1)%maxsize;
+	q.tag&#x3D;1;
+	return true;
+&#125;
+bool pop(myque&amp;q,tree&amp;root)&#123;
+	if(q_isempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	root&#x3D;q.data[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+	q.tag&#x3D;0;
+	return true;
+&#125;
+void create(tree&amp;root)&#123;
+	&#x2F;&#x2F;treenode *t&#x3D;root;
+	cout&lt;&lt;&quot;先序输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+int width(tree &amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;
+	treenode *t&#x3D;root;
+	myque q;
+	push(q,t);
+	int wid&#x3D;0;
+	while(!q_isempty(q))&#123;
+		int tempsize&#x3D;qsize(q);
+		&#x2F;&#x2F;TODO
+		wid&#x3D;max(wid,tempsize);
+
+		for(int i&#x3D;1;i&lt;&#x3D;tempsize;i++)&#123;
+			&#x2F;&#x2F;TODO
+			pop(q,t);
+			if(t-&gt;left!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				push(q,t-&gt;left);
+			&#125;
+			if(t-&gt;right!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				push(q,t-&gt;right);
+			&#125;
+		&#125;
+	&#125;
+	return wid;
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	cout&lt;&lt;width(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+
+
+<h4 id="二叉排序树的判断"><a href="#二叉排序树的判断" class="headerlink" title="二叉排序树的判断"></a>二叉排序树的判断</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;判断一棵树是不是二叉排序树
+&#x2F;&#x2F;中序遍历二叉树，看是不是升序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data,struct treenode*left,struct treenode*right):data(data),left(left),right(right)&#123;&#125;
+&#125;;
+typedef vector&lt;int&gt; arr;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void creat_tree(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请按先序输入，#表示空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(ch);
+		root&#x3D;new treenode(data);
+		creat_tree(root-&gt;left);
+		creat_tree(root-&gt;right);
+	&#125;
+&#125;
+void inorder(tree&amp;root,arr&amp;a)&#123;
+	stack&lt;treenode*&gt;stree;
+	while(root!&#x3D;nullptr||!stree.empty())&#123;
+		&#x2F;&#x2F;TODO
+		while(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			stree.push(root);
+			root&#x3D;root-&gt;left;
+		&#125;
+		root&#x3D;stree.top();
+		stree.pop();
+		a.push_back(root-&gt;data);
+		root&#x3D;root-&gt;right;
+	&#125;
+
+
+&#125;
+int main()&#123;
+	arr a;
+	treenode *root;
+	creat_tree(root);
+	inorder(root,a);
+	cout&lt;&lt;is_sorted(a.begin(),a.end());
+	return 0;
+&#125;
+&#x2F;&#x2F;方法二
+bool isValidBST(TreeNode* root) &#123;
+        &#x2F;&#x2F;非递归中序遍历确保有序
+        long long int predata&#x3D;(long long)INT_MIN-1;
+        stack&lt;TreeNode*&gt; mystack;
+        while(root!&#x3D;nullptr||!mystack.empty())&#123;
+            while(root!&#x3D;nullptr)&#123;
+                mystack.push(root);
+                root&#x3D;root-&gt;left;
+            &#125;
+            root&#x3D;mystack.top();
+            mystack.pop();
+            if(root-&gt;val&lt;&#x3D;predata)&#123;return false;&#125;&#x2F;&#x2F;和前者作比较
+            predata&#x3D;root-&gt;val;&#x2F;&#x2F;储存值
+            root&#x3D;root-&gt;right;
+
+        &#125;
+        return true;
+    &#125;
+</code></pre>
+
+<h4 id="合并二叉树"><a href="#合并二叉树" class="headerlink" title="合并二叉树"></a>合并二叉树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) &#123;
+        if (t1 &#x3D;&#x3D; nullptr) &#123;
+            return t2;
+        &#125;
+        if (t2 &#x3D;&#x3D; nullptr) &#123;
+            return t1;
+        &#125;
+        auto merged &#x3D; new TreeNode(t1-&gt;val + t2-&gt;val);
+        merged-&gt;left &#x3D; mergeTrees(t1-&gt;left, t2-&gt;left);
+        merged-&gt;right &#x3D; mergeTrees(t1-&gt;right, t2-&gt;right);
+        return merged;
+    &#125;
+&#125;;</code></pre>
+
+<h4 id="二叉树第二小结点"><a href="#二叉树第二小结点" class="headerlink" title="二叉树第二小结点"></a>二叉树第二小结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int findSecondMinimumValue(TreeNode* root) &#123;
+        if(!root || !root-&gt;left || !root-&gt;right) return -1;&#x2F;&#x2F;空节点或不满足题意
+        
+        int left&#x3D;root-&gt;left-&gt;val,right&#x3D;root-&gt;right-&gt;val;
+        
+        &#x2F;&#x2F;若根节点和左节点值相同，则递归找左子树的第二小节点
+        if(root-&gt;val&#x3D;&#x3D;root-&gt;left-&gt;val) left&#x3D;findSecondMinimumValue(root-&gt;left);
+        &#x2F;&#x2F;若根节点和右节点值相同，则递归找右子树的第二小节点
+        if(root-&gt;val&#x3D;&#x3D;root-&gt;right-&gt;val) right&#x3D;findSecondMinimumValue(root-&gt;right);
+
+        &#x2F;&#x2F;若根节点等于左右子树的第二小节点返回-1
+        if(root-&gt;val&#x3D;&#x3D;left &amp;&amp; root-&gt;val&#x3D;&#x3D;right) return -1;
+
+        &#x2F;&#x2F;根据当前的根、左右节点的值继续判断
+        int min_lr&#x3D;min(left,right);
+        if(root-&gt;val&lt;min_lr) return min_lr;&#x2F;&#x2F;根节点小于最小值，返回最小值
+        else return max(left,right);&#x2F;&#x2F;根节点与子树的值相等，第二小只能是比最小的还要大
+    &#125;
+
+&#125;;</code></pre>
+
+<h4 id="判断结点是不是堂兄弟"><a href="#判断结点是不是堂兄弟" class="headerlink" title="判断结点是不是堂兄弟"></a>判断结点是不是堂兄弟</h4><pre class="language-c++" data-language="c++"><code class="language-c++">bool iscousn(tree&amp;root,int x,int y)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	myque q;
+	pushq(q,root);
+	bool flag1&#x3D;false;
+	while(!qisempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		int volume&#x3D;qsize(q);
+		int i&#x3D;0;
+		while(i&lt;volume)&#123;
+			&#x2F;&#x2F;TODO
+			popq(q,root);
+			if(root-&gt;left!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				pushq(q,root-&gt;left);
+			&#125;
+			if(root-&gt;right!&#x3D;nullptr)&#123;
+				&#x2F;&#x2F;TODO
+				pushq(q,root-&gt;right);
+			&#125;
+			if(root!&#x3D;nullptr&amp;&amp;root-&gt;data&#x3D;&#x3D;x)&#123;
+				&#x2F;&#x2F;TODO
+				flag1&#x3D;true;
+				
+			&#125;
+			if(flag1&#x3D;&#x3D;true&amp;&amp;root-&gt;data&#x3D;&#x3D;y)&#123;
+				&#x2F;&#x2F;TODO
+				return true;
+			&#125;
+			i++;
+		&#125;
+	&#125;
+	return false;
+&#125;</code></pre>
+
+<h4 id="非递归后序遍历求叶子结点路径"><a href="#非递归后序遍历求叶子结点路径" class="headerlink" title="非递归后序遍历求叶子结点路径"></a>非递归后序遍历求叶子结点路径</h4><pre class="language-c++" data-language="c++"><code class="language-c++">void findpath(tree&amp;root)&#123;
+	myt sta[100];
+	int top&#x3D;0;
+	while(root!&#x3D;nullptr||top&gt;0)&#123;
+		&#x2F;&#x2F;TODO
+		while(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			top++;
+			sta[top].root&#x3D;root;
+			sta[top].tag&#x3D;0;&#x2F;&#x2F;表示左节点已经访问过
+			
+			root&#x3D;root-&gt;left;
+		&#125;
+		&#x2F;&#x2F;此时跳出循环应该是遇到叶子结点的空结点，栈顶肯定是叶子结点
+		cout&lt;&lt;sta[top].root-&gt;data&lt;&lt;&quot;的路径是&quot;&lt;&lt;endl;
+		int i&#x3D;1;
+		while(i&lt;&#x3D;top)&#123;
+			&#x2F;&#x2F;TODO
+			cout&lt;&lt;sta[i].root-&gt;data&lt;&lt;&quot; &quot;;
+			i++;
+		&#125;
+		&#x2F;&#x2F;弹出已经访问过右节点的结点
+		while(top&gt;0&amp;&amp;sta[top].tag&#x3D;&#x3D;1)&#123;
+			&#x2F;&#x2F;TODO
+			top--;
+		&#125;
+		if(top&gt;0)&#123;
+			&#x2F;&#x2F;TODO
+			sta[top].tag&#x3D;1;
+			root&#x3D;sta[top].root-&gt;right;
+		&#125;
+	&#125;
+	
+	
+&#125;</code></pre>
+
+<h4 id="二叉排序树调整"><a href="#二叉排序树调整" class="headerlink" title="二叉排序树调整"></a>二叉排序树调整</h4><pre class="language-c++" data-language="c++"><code class="language-c++">void inorder(tree &amp;root)&#123;
+        if(root) &#123;
+            inorder(root-&gt;left);
+            temp.push_back(root-&gt;val);
+            inorder(root-&gt;right);
+        &#125;
+        
+    &#125;
+&#x2F;&#x2F;中序遍历储存数值
+    void inorder_change(tree &amp;root,vector&lt;int&gt; &amp;temp)&#123;
+        if(root)&#123;
+            inorder_change(root-&gt;left,temp);
+            root-&gt;val&#x3D;temp[cnt];
+            cnt++;
+            cout&lt;&lt;root-&gt;val&lt;&lt;endl;
+            inorder_change(root-&gt;right,temp);    
+        
+        &#125; 
+        
+        
+    &#125;
+&#x2F;&#x2F;中序重新创建二叉树
+    void recoverTree(TreeNode* root) &#123;
+        inorder(root);
+     
+        sort(temp.begin(),temp.end());&#x2F;&#x2F;排序然后重新遍历root，进行修改
+        for(int num:temp)&#123;cout&lt;&lt;num;&#125;
+        cout&lt;&lt;endl;
+        inorder_change(root,temp);
+        
+    &#125;</code></pre>
+
+<h4 id="寻找二叉树相同子树序列"><a href="#寻找二叉树相同子树序列" class="headerlink" title="寻找二叉树相同子树序列"></a>寻找二叉树相同子树序列</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二叉树的序列化，判断是否有相同子树，从最底层开始往上找，所以需要深度优先遍历
+&#x2F;&#x2F;深度优先遍历这里采用先序遍历，然后从底到高记录下序列，每次加入序列就检查是否有重复序列出现
+typedef struct TreeNode* tree;
+
+    vector&lt;TreeNode*&gt; res;
+    unordered_map&lt;string,int&gt;map;
+    &#x2F;&#x2F;int res&#x3D;0;
+    string dfs(tree&amp;root,unordered_map&lt;string,int&gt;&amp;map,vector&lt;TreeNode*&gt;&amp;res)&#123;
+        if(root&#x3D;&#x3D;nullptr) return &quot;&quot;;
+        string str&#x3D;to_string(root-&gt;val)+&quot;,&quot;+dfs(root-&gt;left,map,res)+&quot;,&quot;+dfs(root-&gt;right,map,res);
+        if(map[str]&#x3D;&#x3D;1)&#123;
+            res.push_back(root);
+        &#125;
+        map[str]++;
+        return str;
+    &#125;
+    vector&lt;TreeNode*&gt; findDuplicateSubtrees(TreeNode* root) &#123;
+        dfs(root,map,res);
+        return res;
+    &#125;</code></pre>
+
+<h4 id="二叉树最长同值路径"><a href="#二叉树最长同值路径" class="headerlink" title="二叉树最长同值路径"></a>二叉树最长同值路径</h4><pre class="language-c++" data-language="c++"><code class="language-c++">public:
+	&#x2F;&#x2F;递归看，同值路径必须要经过每一个根
+    int res&#x3D;0;
+
+    int dfs(tree&amp;root)&#123;
+        if(root&#x3D;&#x3D;nullptr) return 0;
+        int left&#x3D;0,right&#x3D;0;
+        int leftend&#x3D;0,rightend&#x3D;0;
+        left&#x3D;dfs(root-&gt;left);
+        right&#x3D;dfs(root-&gt;right);
+        if(root-&gt;left!&#x3D;nullptr&amp;&amp;root-&gt;val&#x3D;&#x3D;root-&gt;left-&gt;val)&#123;
+            leftend&#x3D;left+1;
+        &#125;
+        if(root-&gt;right!&#x3D;nullptr&amp;&amp;root-&gt;right-&gt;val&#x3D;&#x3D;root-&gt;val)&#123;
+            rightend&#x3D;right+1;
+        &#125;
+
+        res&#x3D;max(res,leftend+rightend);
+        return max(leftend,rightend);
+    &#125;
+    int longestUnivaluePath(TreeNode* root) &#123;
+        &#x2F;&#x2F;最长同值路径也是采用递归思想
+        &#x2F;&#x2F;去看左子树的最大同值路径，右子树的最大同直路径，
+        &#x2F;&#x2F;然后看与根值是否相同，左边相同左边+1，否则就归0
+        dfs(root);
+        return res;
+
+    &#125;</code></pre>
+
+<h4 id="左右子树交换是否满足先序序列"><a href="#左右子树交换是否满足先序序列" class="headerlink" title="左右子树交换是否满足先序序列"></a>左右子树交换是否满足先序序列</h4><pre class="language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; res;
+    int i&#x3D;0;
+    bool dfs(tree&amp;root,vector&lt;int&gt;&amp;voyage)&#123;
+        if(root&#x3D;&#x3D;nullptr) return true;
+        if(root-&gt;val!&#x3D;voyage[i]) return false;
+        i++;
+        if(dfs(root-&gt;left,voyage)&amp;&amp;dfs(root-&gt;right,voyage))&#123;
+            return true;
+        &#125;
+        if(dfs(root-&gt;right,voyage)&amp;&amp;dfs(root-&gt;left,voyage))&#123;
+            res.push_back(root-&gt;val);
+            return true;
+        &#125;
+        return false;
+    &#125;
+    vector&lt;int&gt; flipMatchVoyage(TreeNode* root, vector&lt;int&gt;&amp; voyage) &#123;
+        if(dfs(root,voyage))&#123;
+            return res;
+        &#125;
+        res.erase(res.begin(),res.end());
+        res.push_back(-1);
+        return res;
+    &#125;</code></pre>
+
+<h4 id="后序遍历删除特定叶子结点"><a href="#后序遍历删除特定叶子结点" class="headerlink" title="后序遍历删除特定叶子结点"></a>后序遍历删除特定叶子结点</h4><pre class="language-c++" data-language="c++"><code class="language-c++">TreeNode* removeLeafNodes(TreeNode* root, int target) &#123;
+        if(root&#x3D;&#x3D;nullptr) return nullptr;
+        root-&gt;left&#x3D;removeLeafNodes(root-&gt;left,target);
+        root-&gt;right&#x3D;removeLeafNodes(root-&gt;right,target);
+        if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;val&#x3D;&#x3D;target)&#123;
+            return nullptr;
+        &#125;
+        return root;
+
+    &#125;</code></pre>
+
+<h4 id="二叉搜索树删除结点并调整"><a href="#二叉搜索树删除结点并调整" class="headerlink" title="二叉搜索树删除结点并调整"></a>二叉搜索树删除结点并调整</h4><pre class="language-c++" data-language="c++"><code class="language-c++">TreeNode* deleteNode(TreeNode* root, int key) &#123;
+        if(root&#x3D;&#x3D;nullptr) return nullptr;
+        if(key&gt;root-&gt;val)&#123;
+            root-&gt;right&#x3D;deleteNode(root-&gt;right,key);
+        &#125;
+        else if(key&lt;root-&gt;val)&#123;
+            root-&gt;left&#x3D;deleteNode(root-&gt;left,key);
+        &#125;
+        else&#123;
+            if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right&#x3D;&#x3D;nullptr) return nullptr;
+            if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right!&#x3D;nullptr) return root-&gt;right;
+            if(root-&gt;right&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;left!&#x3D;nullptr) return root-&gt;left;
+            if(root-&gt;left!&#x3D;nullptr&amp;&amp;root-&gt;right!&#x3D;nullptr)&#123;
+                TreeNode *node&#x3D;root-&gt;right;
+                while(node-&gt;left!&#x3D;nullptr)&#123;
+                    node&#x3D;node-&gt;left;
+                &#125;
+                node-&gt;left&#x3D;root-&gt;left;
+                root&#x3D;root-&gt;right;
+                
+            &#125;
+
+        &#125;
+        return root;
+    ｝</code></pre>
+
+<h4 id="寻找结点最大乘积"><a href="#寻找结点最大乘积" class="headerlink" title="寻找结点最大乘积"></a>寻找结点最大乘积</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;实现两个数的最大乘积，和一定，那么最大乘积一定是两数平分，所以，
+&#x2F;&#x2F;只有当分出的数越接近、sum的一半乘积越大
+typedef struct TreeNode treenode;
+typedef struct TreeNode* tree;
+class Solution &#123;
+public:
+    int sum&#x3D;0;
+    int partnum&#x3D;0;
+    int partsum&#x3D;0;
+    void dfs(tree&amp;root)&#123;
+        if(root!&#x3D;nullptr)&#123;
+            sum+&#x3D;root-&gt;val;
+            dfs(root-&gt;left);
+            dfs(root-&gt;right);
+        &#125;
+    &#125;
+    int findpart(tree&amp;root)&#123;
+        if(root&#x3D;&#x3D;nullptr) return 0;
+        else&#123;
+            partsum&#x3D;root-&gt;val+findpart(root-&gt;left)+findpart(root-&gt;right);
+        
+            if(abs(2*partsum-sum)&lt;abs(2*partnum-sum))&#123;
+            partnum&#x3D;partsum;
+            &#125;
+        
+            return partsum;
+
+        &#125;
+    &#125;
+    int maxProduct(TreeNode* root) &#123;
+        dfs(root);
+        findpart(root);
+        cout&lt;&lt;sum;
+        return ((unsigned long)partnum * (sum-partnum)) % 1000000007;
+
+    &#125;
+&#125;;</code></pre>
+
+<h4 id="判断二叉树是否对称"><a href="#判断二叉树是否对称" class="headerlink" title="判断二叉树是否对称"></a>判断二叉树是否对称</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;判断一棵树是不是对称树
+&#x2F;&#x2F;看左子树的左子树与右子树的右子树是否相等
+&#x2F;&#x2F;看左子树的右子树与右子树的左子树是否相等
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data,struct treenode*left,struct treenode*right):data(data),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void creat_tree(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请输入每个结点,#表示空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(str);
+		root&#x3D;new treenode(data);
+		creat_tree(root-&gt;left);
+		creat_tree(root-&gt;right);
+	&#125;
+&#125;
+bool is_symmetry(treenode *p,treenode *q)&#123;
+	if(q&#x3D;&#x3D;nullptr&amp;&amp;p&#x3D;&#x3D;nullptr) return true;&#x2F;&#x2F;两节点都为空
+	else if(q&#x3D;&#x3D;nullptr||p&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;else&#123;
+		return p-&gt;data&#x3D;&#x3D;q-&gt;data&amp;&amp;is_symmetry(p-&gt;left,q-&gt;right)&amp;&amp;is_symmetry(p-&gt;right,q-&gt;left);
+	&#125;
+&#125;
+int main()&#123;
+	treenode *root;
+	creat_tree(root);
+	bool res&#x3D; is_symmetry(root,root);
+	cout&lt;&lt;res&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="二叉树结构是否相同"><a href="#二叉树结构是否相同" class="headerlink" title="二叉树结构是否相同"></a>二叉树结构是否相同</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;判断两棵树是否相同
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode*left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data):data(data),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int data,struct treenode*left,struct treenode*right):data(data),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void creat_tree(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请按先序遍历输入，输入#表示结点为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	root&#x3D;new treenode(stoi(str));
+	creat_tree(root-&gt;left);
+	creat_tree(root-&gt;right);
+
+&#125;
+bool is_same_tree(tree&amp;tr1,tree&amp;tr2)&#123;
+	if(tr1&#x3D;&#x3D;nullptr&amp;&amp;tr2&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;else if(tr1&#x3D;&#x3D;nullptr||tr2&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;else if(tr1-&gt;data!&#x3D;tr2-&gt;data)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;else&#123;
+		&#x2F;&#x2F;两个结点相等后，继续深度遍历判断
+		return is_same_tree(tr1-&gt;left,tr2-&gt;left)&amp;&amp;is_same_tree(tr1-&gt;right,tr2-&gt;right);
+	&#125;
+&#125;
+int main()&#123;
+	tree tr1;
+	tree tr2;
+	creat_tree(tr1);
+	cout&lt;&lt;&quot;请输入第二棵树&quot;&lt;&lt;endl;
+	creat_tree(tr2);
+	cout&lt;&lt;is_same_tree(tr1,tr2);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="平衡二叉树的判断"><a href="#平衡二叉树的判断" class="headerlink" title="平衡二叉树的判断"></a>平衡二叉树的判断</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;判断平衡二叉树
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x,struct treenode *left,struct treenode *right):data(x),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create_tree(tree&amp;root)&#123;
+	&#x2F;&#x2F;先序方式创建
+	cout&lt;&lt;&quot;请输入结点值,#表示空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(ch);
+		root&#x3D;new treenode(data);
+		create_tree(root-&gt;left);
+		create_tree(root-&gt;right);
+	&#125;
+
+&#125;
+int depth(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;else&#123;
+		return max(depth(root-&gt;left),depth(root-&gt;right))+1;
+	&#125;
+&#125;
+bool is_balanced(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO,空树也是平衡树
+		return true;
+	&#125;else&#123;
+		&#x2F;&#x2F;递归判断
+		return abs(depth(root-&gt;left)-depth(root-&gt;right))&lt;&#x3D;1 &amp;&amp; is_balanced(root-&gt;left) &amp;&amp; is_balanced(root-&gt;right);
+	&#125;
+&#125;
+int main()&#123;
+	tree root;
+	create_tree(root);
+	cout&lt;&lt;is_balanced(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="求二叉树最小深度"><a href="#求二叉树最小深度" class="headerlink" title="求二叉树最小深度"></a>求二叉树最小深度</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;求二叉树的最小深度
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x,struct treenode *left,struct treenode *right):data(x),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create_tree(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请按先序顺序输入，#表示为空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(ch);
+		root&#x3D;new treenode(data);
+		create_tree(root-&gt;left);
+		create_tree(root-&gt;right);
+	&#125;
+&#125;
+int min_depth(tree&amp;root)&#123;
+	int min_depth_recur&#x3D;INT_MAX;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;
+	if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right&#x3D;&#x3D;nullptr)&#123;
+		return 1;&#x2F;&#x2F;此时root是叶子结点
+		&#x2F;&#x2F;TODO
+	&#125;&#x2F;&#x2F;不是叶子结点开始递归
+
+	else&#123;
+
+		if(root-&gt;left!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			min_depth_recur&#x3D;min(min_depth(root-&gt;left),min_depth_recur);
+		&#125;
+		&#x2F;&#x2F;这么写if是避免了漏掉左子树为空，右子树不为空的
+		if(root-&gt;right!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			min_depth_recur&#x3D;min(min_depth(root-&gt;right),min_depth_recur);
+		&#125;
+
+	&#125;
+	return min_depth_recur+1;
+&#125;
+int main()&#123;
+	tree root;
+	create_tree(root);
+	cout&lt;&lt;min_depth(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="特定路径总和"><a href="#特定路径总和" class="headerlink" title="特定路径总和"></a>特定路径总和</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;路径总和
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x,struct treenode*left,struct treenode*right):data(x),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create_tree(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;请按先序输入，#表示为空&quot;&lt;&lt;endl;
+	string ch;
+	cin&gt;&gt;ch;
+	if(ch&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;else&#123;
+		int data&#x3D;stoi(ch);
+		root&#x3D;new treenode(data);
+		create_tree(root-&gt;left);
+		create_tree(root-&gt;right);
+	&#125;
+&#125;
+bool sum_path(tree&amp;root,int sum)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;data&#x3D;&#x3D;sum)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	return sum_path(root-&gt;left,sum-root-&gt;data)||sum_path(root-&gt;right,sum-root-&gt;data);
+&#125;
+int main()&#123;
+	tree root;
+	create_tree(root);
+	cout&lt;&lt;sum_path(root,4)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="有序数组转换为二叉树"><a href="#有序数组转换为二叉树" class="headerlink" title="有序数组转换为二叉树"></a>有序数组转换为二叉树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;有序数组转化位二叉搜索树
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left,*right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x,struct treenode*left,struct treenode*right):data(x),left(left),right(right)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+typedef vector&lt;int&gt; arr;
+treenode* create_search(arr&amp;num,int left,int right)&#123;
+	if(left&lt;0||right&gt;num.size()||left&gt;right)&#123;
+		&#x2F;&#x2F;TODO
+		return nullptr;
+	&#125;
+	&#x2F;&#x2F;递归出口
+	if(left&#x3D;&#x3D;right)&#123;
+		&#x2F;&#x2F;TODO
+		return new treenode(num[left]);
+	&#125;
+	int mid&#x3D;(left+right)&#x2F;2;
+	treenode *root&#x3D;new treenode(num[mid]);&#x2F;&#x2F;创建结点
+	&#x2F;&#x2F;继续递归
+	root-&gt;left&#x3D;create_search(num,left,mid-1);
+	root-&gt;right&#x3D;create_search(num,mid+1,right);
+	return root;
+&#125;
+&#x2F;&#x2F;先序遍历
+void print(tree&amp;root)
+&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return ;
+	&#125;
+	cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+	print(root-&gt;left);
+	print(root-&gt;right);
+&#125;
+
+int main()&#123;
+	arr a&#123;1,2,3,4,5,6,7,8,9&#125;;
+	int left&#x3D;0,right&#x3D;a.size()-1;
+	treenode *test&#x3D;create_search(a,left,right);
+	print(test);
+	return 0;
+
+&#125;</code></pre>
+
+<h4 id="二叉排序树解决TOP-K问题"><a href="#二叉排序树解决TOP-K问题" class="headerlink" title="二叉排序树解决TOP-K问题"></a>二叉排序树解决TOP-K问题</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二叉搜索树找到第k小个元素
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	int count;&#x2F;&#x2F;这里的count包含根节点，所以初始化时赋值1
+	treenode():data(-1),left(nullptr),right(nullptr),count(1)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr),count(1)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+typedef vector&lt;int&gt; myarray;
+myarray test&#123;78,56,100,34,120,399,32&#125;;
+void insert_node(tree&amp;root,int data)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;new treenode(data);
+		return;
+	&#125;
+	if(root-&gt;data&#x3D;&#x3D;data)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;数值已存在无法插入&quot;&lt;&lt;endl;
+		return;
+	&#125;
+	else if(root-&gt;data&lt;data)&#123;
+		&#x2F;&#x2F;TODO
+		root-&gt;count++;
+		insert_node(root-&gt;right,data);
+	&#125;
+	else&#123;
+		root-&gt;count++;
+		insert_node(root-&gt;left,data);
+	&#125;
+&#125;
+void create(tree&amp;root,myarray test)&#123;
+	int i&#x3D;0;
+	while(i&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		insert_node(root,test[i]);
+		i++;
+	&#125;
+&#125;
+int findnum(tree&amp;root,int k)&#123;
+	if(k&lt;1||k&gt;root-&gt;count) return -1;
+	if(root-&gt;left&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;左子树为空，第k小去右子树找，
+		if(k&#x3D;&#x3D;1)&#123;
+			&#x2F;&#x2F;TODO，根节点
+			return root-&gt;data;
+		&#125;
+		return findnum(root-&gt;right,k-1);&#x2F;&#x2F;从上往下找，直到k减为1，就是第k小
+	&#125;
+	else&#123;
+		if(root-&gt;left-&gt;count&#x3D;&#x3D;k-1)&#123;
+			&#x2F;&#x2F;TODO
+			return root-&gt;data;
+		&#125;
+		if(root-&gt;left-&gt;count&gt;k-1)&#123;
+			&#x2F;&#x2F;TODO
+			return findnum(root-&gt;left,k);&#x2F;&#x2F;这里不用减一
+		&#125;
+		if(root-&gt;left-&gt;count&lt;k-1)&#123;
+			&#x2F;&#x2F;先执行上面的if,然后count不断减小，再来执行这个if
+			return findnum(root-&gt;right,k-(root-&gt;left-&gt;count+1));
+		&#125;
+	&#125;
+&#125;
+int main()&#123;
+	tree root;
+	create(root,test);
+	cout&lt;&lt;findnum(root,2);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="层次遍历判断完全二叉树"><a href="#层次遍历判断完全二叉树" class="headerlink" title="层次遍历判断完全二叉树"></a>层次遍历判断完全二叉树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;层序遍历解决完全二叉树的判定
+#include&lt;bits&#x2F;stdc++.h&gt;
+#define maxsize 100
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+struct myque&#123;
+	treenode* data[maxsize];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+int qsize(myque q)&#123;return (maxsize-(q.f-q.r))%maxsize;&#125;
+bool qisfull(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;1;&#125;
+bool qisempty(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;0;&#125;
+bool pushq(myque&amp;q,treenode* root)&#123;
+	if(qisfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	q.data[q.r]&#x3D;root;
+	q.r&#x3D;(q.r+1)%maxsize;
+	return true;
+&#125;
+bool popq(myque&amp;q,tree&amp;root)&#123;
+	if(qisempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	root&#x3D;q.data[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+&#125;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序树，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+void display(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+	display(root-&gt;left);
+	display(root-&gt;right);
+&#125;
+bool level_bianli(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	myque q;
+	pushq(q,root);
+	while(!qisempty(q))&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;当遇到空结点时，不断出队，只要由非空结点，就说明不是完全二叉树
+		popq(q,root);
+		if(root!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			pushq(q,root-&gt;left);
+			pushq(q,root-&gt;right);
+		&#125;else&#123;
+			&#x2F;&#x2F;遇到空结点，后面应该都是空结点
+			while(!qisempty(q))&#123;
+				&#x2F;&#x2F;TODO
+				popq(q,root);
+				if(root!&#x3D;nullptr)&#123;
+					&#x2F;&#x2F;TODO
+					return false;
+				&#125;
+			&#125;
+		&#125;
+
+	&#125;
+	return true;
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	display(root);
+	cout&lt;&lt;endl;
+	cout&lt;&lt;level_bianli(root);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;创建线索二叉树
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct threadnode&#123;
+	int data;
+	struct threadnode *left;
+	struct threadnode *right;
+	int ltag;
+	int rtag;
+	threadnode():data(-1),left(nullptr),right(nullptr),ltag(0),rtag(0)&#123;&#125;
+	threadnode(int x):data(x),left(nullptr),right(nullptr),ltag(0),rtag(0)&#123;&#125;
+&#125;;
+typedef struct threadnode threadnode;
+typedef struct threadnode* threadtree;
+&#x2F;&#x2F;先创建出树才能线索化
+threadnode *pre&#x3D;nullptr;
+void createtree(threadtree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序遍历顺序输入，#表示空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+	&#125;else&#123;
+		int data&#x3D;stoi(str);
+		root&#x3D;new threadnode(data);
+		createtree(root-&gt;left);
+		createtree(root-&gt;right);
+	&#125;
+
+&#125;
+void visit(threadtree&amp;root)&#123;
+	&#x2F;&#x2F;当前结点的左子树为空，要么前驱结点的右子树为空，只有这两种情况
+	&#x2F;&#x2F;中序遍历线索化，只有最后没有孩子了，前驱和后继才能赋值
+	&#x2F;&#x2F;助记，中序线索化，就是为了找前驱，当前结点左子树为空，才能赋值前驱
+	if(root-&gt;left&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		root-&gt;left&#x3D;pre;
+		root-&gt;ltag&#x3D;1;
+	&#125;
+	if(pre!&#x3D;nullptr&amp;&amp;pre-&gt;right&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		pre-&gt;right&#x3D;root;
+		pre-&gt;rtag&#x3D;1;
+	&#125;
+	pre&#x3D;root;
+&#125;
+void vesttree(threadtree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;else&#123;
+		vesttree(root-&gt;left);
+		visit(root);
+		vesttree(root-&gt;right);
+	&#125;
+
+&#125;
+void create_threadtree(threadtree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	else&#123;
+		vesttree(root);
+		if(pre-&gt;right&#x3D;&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			pre-&gt;rtag&#x3D;1;
+		&#125;
+	&#125;
+
+&#125;
+void bianli(threadtree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;else&#123;
+
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;&lt;&lt;root-&gt;ltag&lt;&lt;&quot; &quot;&lt;&lt;root-&gt;rtag&lt;&lt;endl;
+		if(root-&gt;ltag&#x3D;&#x3D;0)&#123;
+			bianli(root-&gt;left);
+		&#125;
+		if(root-&gt;rtag&#x3D;&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			bianli(root-&gt;right);
+		&#125;
+
+	&#125;
+&#125;
+&#x2F;&#x2F;寻找子树的第一个结点
+threadnode* firstnode(threadtree&amp;root)&#123;
+	while(root-&gt;ltag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;root-&gt;left;
+	&#125;
+	return root;
+&#125;
+&#x2F;&#x2F;寻找某个结点的后继，就是寻找这个结点右子树的第一个结点
+threadnode* nextnode(threadtree&amp;root)&#123;
+	if(root-&gt;rtag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		return firstnode(root-&gt;right);
+	&#125;
+	return root-&gt;right;
+&#125;
+void real_bianli(threadtree&amp;root)&#123;
+	for(threadnode *p&#x3D;firstnode(root);p!&#x3D;nullptr;p&#x3D;nextnode(p))&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p-&gt;data&lt;&lt;&quot; &quot;;
+	&#125;
+&#125;
+&#x2F;&#x2F;找子树的最后一个结点，就是找子树的最右边的结点
+threadnode* lastnode(threadtree&amp;root)&#123;
+	while(root-&gt;rtag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;root-&gt;right;
+	&#125;
+	return root;
+&#125;
+&#x2F;&#x2F;找前驱就是找左子树的最后一个结点
+threadnode* prenode(threadtree&amp;root)&#123;
+	if(root-&gt;ltag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		return lastnode(root-&gt;left);
+	&#125;
+	return root-&gt;left;
+&#125;
+void real_bianli2(threadtree&amp;root)&#123;
+	for(threadnode *p&#x3D;lastnode(root);p!&#x3D;nullptr;p&#x3D;prenode(p))&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;p-&gt;data&lt;&lt;&quot; &quot;;
+	&#125;
+&#125;
+int main()&#123;
+	threadtree root;
+	createtree(root);
+	create_threadtree(root);
+	bianli(root);&#x2F;&#x2F;直接遍历会成环
+	real_bianli(root);
+	cout&lt;&lt;endl;
+	cout&lt;&lt;root-&gt;data&lt;&lt;endl;
+	real_bianli2(root);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="从左到右结点串成串"><a href="#从左到右结点串成串" class="headerlink" title="从左到右结点串成串"></a>从左到右结点串成串</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;中序遍历将叶子结点串成串
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxsize 100
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+struct mystack&#123;
+	treenode* data[maxsize];
+	int top;
+	mystack():top(-1)&#123;&#125;
+&#125;;
+struct listnode&#123;
+	int data;
+	struct treenode *next;
+	listnode():data(-1),next(nullptr)&#123;&#125;
+&#125;;
+typedef struct listnode listnode;
+typedef struct mystack mystack;
+bool s_isempty(mystack s)&#123;return s.top&#x3D;&#x3D;-1;&#125;
+bool s_isfull(mystack s)&#123;return s.top&#x3D;&#x3D;maxsize-1;&#125;
+bool spush(mystack&amp;s,tree&amp;root)&#123;
+	if(s_isfull(s))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	s.top++;
+	s.data[s.top]&#x3D;root;
+	return true;
+&#125;
+bool spop(mystack&amp;s,tree&amp;root)&#123;
+	if(s_isempty(s))&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;
+	root&#x3D;s.data[s.top];
+	s.top--;
+	return true;
+&#125;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;输入先序序列，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+
+&#125;
+mystack s;
+listnode *p_head&#x3D;new listnode();
+void lis(tree&amp;root)&#123;
+	treenode *temp;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	&#x2F;&#x2F;不断向左遍历，直到找到最左边的叶子结点
+	lis(root-&gt;left);
+	if(root-&gt;left&#x3D;&#x3D;nullptr&amp;&amp;root-&gt;right&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		if(s_isempty(s))&#123;
+			&#x2F;&#x2F;TODO
+			p_head-&gt;next&#x3D;root;
+			spush(s,root);
+		&#125;else&#123;
+			spop(s,temp);
+			temp-&gt;right&#x3D;root;
+			spush(s,root);
+		&#125;
+	&#125;
+	lis(root-&gt;right);
+
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	lis(root);
+	root&#x3D;p_head-&gt;next;
+	while(root!&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+		root&#x3D;root-&gt;right;
+
+	&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="判断两树相似"><a href="#判断两树相似" class="headerlink" title="判断两树相似"></a>判断两树相似</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递归判断两树相似
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+bool is_similar(tree&amp;root1,tree&amp;root2)&#123;
+	if(root1&#x3D;&#x3D;nullptr&amp;&amp;root2&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;
+	else if(root1&#x3D;&#x3D;nullptr||root2&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return false;
+	&#125;else&#123;
+		return is_similar(root1-&gt;left,root2-&gt;left)&amp;&amp;is_similar(root1-&gt;right,root2-&gt;right);
+	&#125;
+&#125;
+int main()&#123;
+	tree root1;
+	tree root2;
+	cout&lt;&lt;&quot;第一棵树&quot;&lt;&lt;endl;
+	create(root1);
+	cout&lt;&lt;&quot;第二棵树&quot;&lt;&lt;endl;
+	create(root2);
+	if(is_similar(root1,root2))&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;相似&quot;&lt;&lt;endl;
+	&#125;else&#123;cout&lt;&lt;&quot;不相似&quot;&lt;&lt;endl;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="二叉树最近公共祖先"><a href="#二叉树最近公共祖先" class="headerlink" title="二叉树最近公共祖先"></a>二叉树最近公共祖先</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;寻找二叉树的最近公共祖先
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;按先序序列输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+treenode* ancestor(tree&amp;root,int p,int q)&#123;
+	&#x2F;&#x2F;不断递归，无论那一层，当p,q,出现在根节点上
+	if(root&#x3D;&#x3D;nullptr||root-&gt;data&#x3D;&#x3D;p||root-&gt;data&#x3D;&#x3D;q)&#123;
+		return root;&#x2F;&#x2F;从上往下递归，每一层都先看，每一层的root,是不是这两个数，才往下递归
+	&#125;
+	&#x2F;&#x2F;说明根不是这两个，开始分别去左子树和右子树看
+	treenode* lef&#x3D;ancestor(root-&gt;left,p,q);
+	treenode* righ&#x3D;ancestor(root-&gt;right,p,q);
+	if(lef&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO说明，没有找到这两个中的任一个
+		return righ;
+	&#125;
+	if(righ&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return lef;
+	&#125;
+	&#x2F;&#x2F;都找到说明，在两个分支上
+	return root;&#x2F;&#x2F;就将这一层的root返回
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	int p,q;
+	cout&lt;&lt;&quot;输入p,q&quot;&lt;&lt;endl;
+	cin&gt;&gt;p&gt;&gt;q;
+	root&#x3D;ancestor(root,p,q);
+	cout&lt;&lt;root-&gt;data&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="孩子兄弟表示法计算叶子结点个数"><a href="#孩子兄弟表示法计算叶子结点个数" class="headerlink" title="孩子兄弟表示法计算叶子结点个数"></a>孩子兄弟表示法计算叶子结点个数</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+int leaves(tree&amp;root)&#123;
+
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;
+	if(root-&gt;left&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 1+leaves(root-&gt;right);
+	&#125;
+	else&#123;
+		return leaves(root-&gt;left)+leaves(root-&gt;right);
+	&#125;
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	cout&lt;&lt;leaves(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="孩子兄弟表示法求树深度"><a href="#孩子兄弟表示法求树深度" class="headerlink" title="孩子兄弟表示法求树深度"></a>孩子兄弟表示法求树深度</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序输入，#表示空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+int height(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return 0;
+	&#125;
+	else&#123;
+		int hleft&#x3D;height(root-&gt;left);
+		int hright&#x3D;height(root-&gt;right);
+		return max(hleft+1,hright);
+	&#125;
+
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	cout&lt;&lt;height(root)&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="根据满二叉树的先序求后序"><a href="#根据满二叉树的先序求后序" class="headerlink" title="根据满二叉树的先序求后序"></a>根据满二叉树的先序求后序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;满二叉树的后序序列
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; arr;
+
+void post(arr data,int s,int en,arr&amp;a,int s1,int en1)&#123;
+	int mid;&#x2F;&#x2F;左右子树分割
+	if(s&lt;&#x3D;en)&#123;
+		&#x2F;&#x2F;TODO
+		&#x2F;&#x2F;满二叉树是对称图形，前序序列与后序序列不同的是，根位置发生了变化，其余不变
+		a[en1]&#x3D;data[s];&#x2F;&#x2F;后序遍历的后面是前序遍历的前面
+		mid&#x3D;(en-s)&#x2F;2;
+		post(data,s+1,s+mid,a,s1,s1+mid-1);
+		post(data,s+mid+1,en,a,s1+mid,en1-1);
+	&#125;
+
+
+&#125;
+int main()&#123;
+	arr data&#x3D;&#123;1,2,4,5,3,6,7&#125;;
+	arr a(7);
+	post(data,0,data.size(),a,0,6);
+	for(int num:a)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;</code></pre>
+
+<h4 id="根据先序和后序构建二叉树"><a href="#根据先序和后序构建二叉树" class="headerlink" title="根据先序和后序构建二叉树"></a>根据先序和后序构建二叉树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;先序和中序，二叉树的重构
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+int pos&#x3D;0;&#x2F;&#x2F;全局变量，
+void create(tree&amp;root,int pre[],int inorder[],int s,int end)&#123;
+	if(s&lt;&#x3D;end)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;new treenode(pre[pos]);
+
+		&#x2F;&#x2F;找到根节点在中序的下标，然后就可以分开递归
+		int i;
+		for(i&#x3D;s;i&lt;&#x3D;end;i++)&#123;
+			&#x2F;&#x2F;TODO
+			if(inorder[i]&#x3D;&#x3D;pre[pos])&#123;
+				&#x2F;&#x2F;TODO
+				break;
+			&#125;
+		&#125;
+		pos++;&#x2F;&#x2F;准备下一个根节点
+		create(root-&gt;left,pre,inorder,s,i-1);&#x2F;&#x2F;准备左子树
+		create(root-&gt;right,pre,inorder,i+1,end);&#x2F;&#x2F;准备右子树
+	&#125;
+&#125;
+void preorder(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;else&#123;
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+		preorder(root-&gt;left);
+		preorder(root-&gt;right);
+	&#125;
+
+&#125;
+void sinorder(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;else&#123;
+
+		sinorder(root-&gt;left);
+		cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+		sinorder(root-&gt;right);
+	&#125;
+&#125;
+int main()&#123;
+	int pre[]&#x3D;&#123;1,2,4,5,3&#125;;
+	int inorder[]&#x3D;&#123;4,2,5,1,3&#125;;
+	tree root;
+	create(root,pre,inorder,0,4);
+	preorder(root);
+	&#x2F;&#x2F;sinorder(root);
+&#125;</code></pre>
+
+<h4 id="中序线索化后找后序前驱"><a href="#中序线索化后找后序前驱" class="headerlink" title="中序线索化后找后序前驱"></a>中序线索化后找后序前驱</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;中序线索化，找后序前驱
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct treenode&#123;
+	int data;
+	int ltag;
+	int rtag;
+	struct treenode *left;
+	struct treenode *right;
+	treenode():data(-1),ltag(0),rtag(0),left(nullptr),right(nullptr)&#123;&#125;
+	treenode(int x):data(x),ltag(0),rtag(0),left(nullptr),right(nullptr)&#123;&#125;
+&#125;;
+typedef struct treenode treenode;
+typedef struct treenode* tree;
+void create(tree&amp;root)&#123;
+	cout&lt;&lt;&quot;先序输入，#为空&quot;&lt;&lt;endl;
+	string str;
+	cin&gt;&gt;str;
+	if(str&#x3D;&#x3D;&quot;#&quot;)&#123;
+		&#x2F;&#x2F;TODO
+		root&#x3D;nullptr;
+		return;
+	&#125;
+	int data&#x3D;stoi(str);
+	root&#x3D;new treenode(data);
+	create(root-&gt;left);
+	create(root-&gt;right);
+&#125;
+&#x2F;&#x2F;中序线索化
+treenode *pre&#x3D;nullptr;
+void vithread(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	if(root-&gt;left&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		root-&gt;left&#x3D;pre;
+		root-&gt;ltag&#x3D;1;
+	&#125;
+	if(pre!&#x3D;nullptr&amp;&amp;pre-&gt;right&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		pre-&gt;right&#x3D;root;
+		pre-&gt;rtag&#x3D;1;
+	&#125;
+	pre&#x3D;root;
+&#125;
+void inorderth(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	inorderth(root-&gt;left);
+	vithread(root);
+	inorderth(root-&gt;right);
+&#125;
+void start_inorder(tree&amp;root)&#123;
+	if(root&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		return;
+	&#125;
+	inorderth(root);
+	if(pre-&gt;right&#x3D;&#x3D;nullptr)&#123;
+		&#x2F;&#x2F;TODO
+		pre-&gt;rtag&#x3D;1;
+	&#125;
+&#125;
+tree trfind(tree&amp;p)&#123;
+	&#x2F;&#x2F;线索化后的树，0代表孩子，1代表前驱
+	treenode *res;
+	if(p-&gt;rtag&#x3D;&#x3D;0)&#123;
+		&#x2F;&#x2F;TODO
+		res&#x3D;p-&gt;right;
+	&#125;
+	else if(p-&gt;ltag&#x3D;&#x3D;0)&#123;res&#x3D;p-&gt;left;&#125;
+	else if(p-&gt;left&#x3D;&#x3D;nullptr)&#123;res&#x3D;nullptr;&#125;&#x2F;&#x2F;整个树最左边结点
+	else&#123;
+		&#x2F;&#x2F;当左右孩子均为空时
+		&#x2F;&#x2F;后序前驱，是中序线索树中该结点前驱的左孩子
+		while(p-&gt;ltag&#x3D;&#x3D;1&amp;&amp;p-&gt;left!&#x3D;nullptr)&#123;
+			&#x2F;&#x2F;TODO
+			p&#x3D;p-&gt;left;&#x2F;&#x2F;不断往上查找，p-&gt;left&#x3D;&#x3D;nullptr,也是在考虑最左结点
+		&#125;
+		if(p-&gt;ltag&#x3D;&#x3D;0)&#123;res&#x3D;p-&gt;left;&#125;
+		else&#123;res&#x3D;nullptr;&#125;&#x2F;&#x2F;最左边结点
+	&#125;
+	return res;
+&#125;
+int main()&#123;
+	tree root;
+	create(root);
+	tree t&#x3D;root;
+	start_inorder(t);
+	tree res&#x3D;trfind(root-&gt;right);
+	cout&lt;&lt;res-&gt;data&lt;&lt;endl;
+	return 0;
+&#125;</code></pre>
+
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><h4 id="二分查找递归"><a href="#二分查找递归" class="headerlink" title="二分查找递归"></a>二分查找递归</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;二分查找的递归写法
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+int b_search(vector&lt;int&gt; test,int l,int r,int x)&#123;
+	if(l&gt;r)&#123;
+		&#x2F;&#x2F;TODO
+		return -1;
+	&#125;
+	int mid&#x3D;(l+r)&#x2F;2;
+	if(x&gt;test[mid])&#123;
+		&#x2F;&#x2F;TODO
+		return b_search(test,mid+1,r,x);
+	&#125;
+	else if(x&lt;test[mid])&#123;
+		&#x2F;&#x2F;TODO
+		return b_search(test,l,mid-1,x);
+	&#125;
+	else&#123;
+		return mid;
+	&#125;
+&#125;
+int main()&#123;
+	vector&lt;int&gt; test;
+	for(int i&#x3D;0;i&lt;&#x3D;10;i++)&#123;
+		&#x2F;&#x2F;TODO
+		test.push_back(i);
+	&#125;
+	cout&lt;&lt;b_search(test,1,test.size(),5);
+	return 0;
+&#125;</code></pre>
+
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="bfs最短路径"><a href="#bfs最短路径" class="headerlink" title="bfs最短路径"></a>bfs最短路径</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;bfs单源最短路径
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxv 4
+#define maxsize 100
+&#x2F;&#x2F;定义图的结构体
+struct graph&#123;
+	int vnum;
+	char name[4];
+	int a[4][4];
+	graph():vnum(4),name&#123;&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;&#125;,a&#123;
+	&#123;0,1,9999,9999&#125;,
+	&#123;1,0,1,1&#125;,
+	&#123;9999,1,0,9999&#125;,
+	&#123;9999,1,9999,0&#125;&#125;&#123;&#125;
+&#125;;
+vector&lt;bool&gt; visited(4);
+typedef struct graph graph;
+struct myque&#123;
+	int v[100];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+int qsize(myque q)&#123;return (maxsize-(q.f-q.r))%maxsize;&#125;
+bool qfull(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;1;&#125;
+bool qnone(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;0;&#125;
+bool pushque(myque &amp;q,int &amp;i)&#123;
+	if(qfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;队列已满&quot;&lt;&lt;endl;
+		return false;
+	&#125;
+	q.v[q.r]&#x3D;i;
+	q.r&#x3D;(q.r+1)%maxsize;
+	return true;
+&#125;
+bool popque(myque &amp;q,int&amp;i)&#123;
+	if(qnone(q))&#123;
+		cout&lt;&lt;&quot;队列已空&quot;&lt;&lt;endl;
+		return false;
+	&#125;
+	i&#x3D;q.v[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+	return true;
+&#125;
+int path[4];
+int prevex[4];
+void bfs(graph g,int num)&#123;
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		path[i]&#x3D;9999;
+		prevex[i]&#x3D;-1;
+	&#125;
+	myque q;
+	prevex[num]&#x3D;num;
+	path[num]&#x3D;0;
+	visited[num]&#x3D;true;
+	pushque(q,num);
+	while(qsize(q)&gt;0)&#123;
+		&#x2F;&#x2F;TODO
+		popque(q,num);
+		for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+			&#x2F;&#x2F;TODO
+			if(visited[i]&#x3D;&#x3D;0&amp;&amp;g.a[num][i]!&#x3D;9999)&#123;
+				&#x2F;&#x2F;TODO
+				path[i]&#x3D;path[num]+1;
+				prevex[i]&#x3D;num;
+				visited[i]&#x3D;true;
+				pushque(q,i);
+			&#125;
+		&#125;
+	&#125;
+&#125;
+int main()&#123;
+	graph g;
+	bfs(g,0);
+	for(int i&#x3D;0;i&lt;4;i++)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;path[i]&lt;&lt;&quot; &quot;;
+	&#125;
+	return 0;
+&#125;
+</code></pre>
+
+<h4 id="dfs逆拓扑"><a href="#dfs逆拓扑" class="headerlink" title="dfs逆拓扑"></a>dfs逆拓扑</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;dfs实现逆拓扑序列和拓扑序列AOV
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct graph&#123;
+	int vnum;
+	int edge[5][5];
+	graph():vnum(5),edge&#123;
+	&#123;0,1,9999,9999,9999&#125;,
+	&#123;9999,0,9999,1,9999&#125;,
+	&#123;9999,9999,0,1,1&#125;,
+	&#123;9999,9999,9999,0,1&#125;,
+	&#123;9999,9999,9999,9999,0&#125;&#125;&#123;&#125;
+&#125;;
+typedef struct graph graph;
+bool visited[5];
+void dfs(graph g,int m)&#123;
+	visited[m]&#x3D;true;
+	for(int i&#x3D;0;i&lt;5;i++)&#123;
+		&#x2F;&#x2F;TODO
+		if(visited[i]&#x3D;&#x3D;0&amp;&amp;g.edge[m][i]!&#x3D;9999&amp;&amp;g.edge[m][i]!&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			dfs(g,i);
+		&#125;
+	&#125;
+	cout&lt;&lt;m&lt;&lt;&quot; &quot;;
+&#125;
+void dfsall(graph g)&#123;
+	for(int i&#x3D;0;i&lt;5;i++)&#123;
+		&#x2F;&#x2F;TODO
+		visited[i]&#x3D;false;
+	&#125;
+	for(int i&#x3D;0;i&lt;5;i++)&#123;
+		&#x2F;&#x2F;TODO
+		if(visited[i]&#x3D;&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			dfs(g,i);
+		&#125;
+	&#125;
+&#125;
+int main()&#123;
+	graph g;
+	dfsall(g);
+	
+	return 0;
+&#125;</code></pre>
+
+<h4 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;最小生成树prim&amp;&amp;kruskal
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxv 6
+struct graph&#123;
+	int vnum;
+	char name[6];
+	int edge[maxv][maxv];
+	graph():vnum(6),name&#123;&#39;X&#39;,&#39;Y&#39;,&#39;Z&#39;,&#39;O&#39;,&#39;P&#39;,&#39;Q&#39;&#125;,edge&#123;
+	&#123;0,6,5,1,9999,9999&#125;,
+	&#123;6,0,9999,5,3,9999&#125;,
+	&#123;5,9999,0,4,9999,2&#125;,
+	&#123;1,5,4,0,6,4&#125;,
+	&#123;9999,3,9999,6,0,6&#125;,
+	&#123;9999,9999,2,4,6,0&#125;&#125;&#123;&#125;
+&#125;;
+typedef struct graph graph;
+void prim(graph g)&#123;
+	int lowcost[6];&#x2F;&#x2F;存储到达6个点的花费代价
+	int adjvex[6];&#x2F;&#x2F;存储最后6条边的起点
+	&#x2F;&#x2F;把第一条边加入
+
+	for(int i&#x3D;1;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		lowcost[i]&#x3D;g.edge[0][i];
+		adjvex[i]&#x3D;0;&#x2F;&#x2F;起初起点都是0，避免找不到顶点
+	&#125;
+	&#x2F;&#x2F;开始一行行查找最小的代价，并把它加入
+
+	for(int i&#x3D;1;i&lt;g.vnum;i++)&#123;
+		int minedge&#x3D;9999,minvex;
+		int k&#x3D;1;
+		while(k&lt;g.vnum)&#123;
+			&#x2F;&#x2F;TODO
+			if((lowcost[k]!&#x3D;0)&amp;&amp;lowcost[k]&lt;minedge)&#123;
+				&#x2F;&#x2F;TODO
+				minedge&#x3D;lowcost[k];
+				minvex&#x3D;k;
+			&#125;
+			k++;
+		&#125;
+
+		&#x2F;&#x2F;找到此时能到达花费代价最小的边
+		&#x2F;&#x2F;更新图中信息
+		lowcost[minvex]&#x3D;0;
+		&#x2F;&#x2F;每确定一个点就将和他相连的边打印出来
+		cout&lt;&lt;&quot;(&quot;&lt;&lt;g.name[adjvex[minvex]]&lt;&lt;&quot;,&quot;&lt;&lt;g.name[minvex]&lt;&lt;&quot;)&quot;&lt;&lt;&quot; &quot;;
+		&#x2F;&#x2F;更新图
+		for(int j&#x3D;1;j&lt;g.vnum;j++)&#123;
+			&#x2F;&#x2F;TODO
+			if((lowcost[j]!&#x3D;0)&amp;&amp;g.edge[minvex][j]&lt;lowcost[j])&#123;
+				&#x2F;&#x2F;TODO
+				lowcost[j]&#x3D;g.edge[minvex][j];
+				adjvex[j]&#x3D;minvex;
+			&#125;
+		&#125;
+
+	&#125;
+&#125;
+int main()&#123;
+	graph g;
+	prim(g);
+	return 0;
+&#125;
+&#x2F;*int Find(int *parent, int f) &#123;
+while (parent[f] &gt; 0) &#123;
+f &#x3D; parent[f];&#x2F;&#x2F;如果f点有其他的终点，将其返回
+&#125;
+return f;
+&#125;
+
+
+void MiniSpanTree_Kruskal(MGraph G) &#123;
+int i, j, n, m, k;
+Edge edges[G.numEdges];
+int parent[G.numVertexes];
+
+&#x2F;&#x2F;******************adjacency Matrix to Edges Array********************
+k &#x3D; 0;
+for (i &#x3D; 0; i &lt; G.numVertexes; i++) &#123;
+for (j &#x3D; (i + 1); j &lt; G.numVertexes; j++) &#123; &#x2F;*undigraph just deal with upper triangle Matrix*&#x2F;
+&#x2F;*if (G.arc[i][j] !&#x3D; INFINITY) &#123;
+edges[k].weight &#x3D; G.arc[i][j];
+edges[k].begin &#x3D; i;
+edges[k].end &#x3D; j;
+k++;
+&#125;
+&#125;
+&#125;
+&#x2F;&#x2F;******************adjacency Matrix to Edges Array********************
+&#x2F;&#x2F;print the edge array.
+&#x2F;&#x2F;for(i&#x3D;0;i&lt;G.numEdges;i++)
+&#x2F;&#x2F;	&#123;
+&#x2F;&#x2F;		printf(&quot;edge[%d]: begin: %d, end: %d, weight: %d \n&quot;,i,edges[i].begin,edges[i].end,edges[i].weight);
+&#x2F;&#x2F;	&#125;
+
+&#x2F;&#x2F;************sort the edges array with bubble sorting method**********
+Edge temp;
+for (k &#x3D; 1; k &lt;&#x3D; G.numEdges - 1; k++) &#123;
+for (i &#x3D; 0; i &lt; G.numEdges - k; i++) &#123;
+if (edges[i].weight &gt; edges[i + 1].weight) &#123;
+temp &#x3D; edges[i];
+edges[i] &#x3D; edges[i + 1];
+edges[i + 1] &#x3D; temp;
+&#125;
+
+&#125;
+&#125;&#x2F;&#x2F;将边排序
+
+&#x2F;&#x2F;print the ordered edge array
+&#x2F;&#x2F;for(i&#x3D;0;i&lt;G.numEdges;i++)
+&#x2F;&#x2F;	&#123;
+&#x2F;&#x2F;		printf(&quot;edge[%d]: begin: %d, end: %d, weight: %d \n&quot;,i,edges[i].begin,edges[i].end,edges[i].weight);
+&#x2F;&#x2F;	&#125;
+&#x2F;&#x2F;************sort the edges array with bubble sorting method**********
+
+for (i &#x3D; 0; i &lt; G.numVertexes; i++) &#123;
+parent[i] &#x3D; 0;
+&#125;
+printf(&quot;The minimum spanning tree is (Kruskal):\n&quot;);
+for (i &#x3D; 0; i &lt; G.numEdges; i++) &#123;
+n &#x3D; Find(parent, edges[i].begin);
+m &#x3D; Find(parent, edges[i].end);
+if (n !&#x3D; m) &#123;
+parent[n] &#x3D; m;
+printf(&quot;[(%c,%c) %d] &quot;, G.vexs[edges[i].begin], G.vexs[edges[i].end], edges[i].weight);
+&#125;
+&#125;
+printf(&quot;\n&quot;);
+&#125;
+
+ *&#x2F;</code></pre>
+
+<h4 id="迪杰斯特拉单源最短路"><a href="#迪杰斯特拉单源最短路" class="headerlink" title="迪杰斯特拉单源最短路"></a>迪杰斯特拉单源最短路</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;dijkstra算法
+
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+struct graph&#123;
+	int vnum;
+	string name[5];
+	int edge[5][5];
+	graph():vnum(5),name&#123;&quot;v0&quot;,&quot;v1&quot;,&quot;v2&quot;,&quot;v3&quot;,&quot;v4&quot;&#125;,edge&#123;
+	&#123;0,10,9999,7,5&#125;,
+	&#123;10,0,6,9999,2&#125;,
+	&#123;9999,6,0,6,9&#125;,
+	&#123;7,9999,6,0,2&#125;,
+	&#123;5,2,9,2,0&#125;&#125;&#123;&#125;
+&#125;;
+typedef struct graph graph;
+int finded[5];
+int path[5];
+int prevex[5];
+void dijkstra(graph g,int m)&#123;
+	&#x2F;&#x2F;初始化
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		finded[i]&#x3D;0;
+		path[i]&#x3D;g.edge[m][i];;
+		prevex[i]&#x3D;-1;
+	&#125;
+	prevex[m]&#x3D;m;
+	finded[m]&#x3D;1;
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		int minedge&#x3D;9999,minvex,j&#x3D;0;
+		while(j&lt;g.vnum)&#123;
+			&#x2F;&#x2F;TODO
+			if(finded[j]&#x3D;&#x3D;0&amp;&amp;path[j]&lt;minedge)&#123;
+				&#x2F;&#x2F;TODO
+				minedge&#x3D;path[j];
+				minvex&#x3D;j;
+			&#125;
+			j++;
+		&#125;
+		&#x2F;&#x2F;找到一行中最少的路径
+		&#x2F;&#x2F;更新path,prevex,finded;
+		finded[minvex]&#x3D;1;
+		for(int k&#x3D;0;k&lt;g.vnum;k++)&#123;
+			&#x2F;&#x2F;TODO
+			if(finded[k]&#x3D;&#x3D;0&amp;&amp;path[minvex]+g.edge[minvex][k]&lt;path[k])&#123;
+				&#x2F;&#x2F;TODO
+				path[k]&#x3D;path[minvex]+g.edge[minvex][k];
+				prevex[k]&#x3D;minvex;
+			&#125;
+		&#125;
+
+
+	&#125;
+&#125;
+int main()&#123;
+	graph g;
+	dijkstra(g,0);
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;path[i]&lt;&lt;&quot; &quot;;
+	&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="dfs-amp-amp-bfs"><a href="#dfs-amp-amp-bfs" class="headerlink" title="dfs&amp;&amp;bfs"></a>dfs&amp;&amp;bfs</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;图的深度优先遍历
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+#define maxv 4
+#define maxsize 100
+&#x2F;&#x2F;定义图的结构体
+struct graph&#123;
+	int vnum;
+	char name[4];
+	int a[4][4];
+	graph():vnum(4),name&#123;&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;&#125;,a&#123;
+	&#123;0,1,9999,9999&#125;,
+	&#123;1,0,1,1&#125;,
+	&#123;9999,1,0,9999&#125;,
+	&#123;9999,1,9999,0&#125;&#125;&#123;&#125;
+&#125;;
+vector&lt;bool&gt; visited(4);
+typedef struct graph graph;
+struct myque&#123;
+	int v[100];
+	int f,r,tag;
+	myque():f(0),r(0),tag(0)&#123;&#125;
+&#125;;
+typedef struct myque myque;
+int qsize(myque q)&#123;return (maxsize-(q.f-q.r))%maxsize;&#125;
+bool qfull(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;1;&#125;
+bool qnone(myque q)&#123;return q.f&#x3D;&#x3D;q.r&amp;&amp;q.tag&#x3D;&#x3D;0;&#125;
+bool pushque(myque &amp;q,int &amp;i)&#123;
+	if(qfull(q))&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;&quot;队列已满&quot;&lt;&lt;endl;
+		return false;
+	&#125;
+	q.v[q.r]&#x3D;i;
+	q.r&#x3D;(q.r+1)%maxsize;
+	return true;
+&#125;
+bool popque(myque &amp;q,int&amp;i)&#123;
+	if(qnone(q))&#123;
+		cout&lt;&lt;&quot;队列已空&quot;&lt;&lt;endl;
+		return false;
+	&#125;
+	i&#x3D;q.v[q.f];
+	q.f&#x3D;(q.f+1)%maxsize;
+	return true;
+&#125;
+void dfs(graph g,int i)&#123;
+	int j&#x3D;0;
+	visited[i]&#x3D;1;&#x2F;&#x2F;标志i结点已经访问过
+	cout&lt;&lt;g.name[i]&lt;&lt;&quot; &quot;;
+	for(j&#x3D;0;j&lt;g.vnum;j++)&#123;
+		&#x2F;&#x2F;TODO
+		if(g.a[i][j]!&#x3D;9999&amp;&amp;visited[j]&#x3D;&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			dfs(g,j);
+		&#125;
+	&#125;
+
+&#125;
+void dfsall(graph g)&#123;
+	&#x2F;&#x2F;初始化，是否访问过标志数组
+	for(int i&#x3D;0;i&lt;visited.size();i++)&#123;
+		&#x2F;&#x2F;TODO
+		visited[i]&#x3D;0;
+	&#125;
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		if(!visited[i])&#123;
+			&#x2F;&#x2F;TODO
+			dfs(g,i);
+		&#125;
+	&#125;
+&#125;
+void bfs(graph g,int i)&#123;
+	myque q;
+	visited[i]&#x3D;1;
+	cout&lt;&lt;g.name[i]&lt;&lt;&quot; &quot;;
+	pushque(q,i);
+	int j;
+	while(qsize(q)&gt;0)&#123;
+		&#x2F;&#x2F;TODO
+		popque(q,i);
+
+		for(j&#x3D;0;j&lt;g.vnum;j++)&#123;
+			&#x2F;&#x2F;TODO
+			if(g.a[i][j]!&#x3D;9999&amp;&amp;visited[j]&#x3D;&#x3D;0)&#123;
+				visited[j]&#x3D;1;
+				cout&lt;&lt;g.name[j]&lt;&lt;&quot; &quot;;
+				pushque(q,j);
+			&#125;
+		&#125;
+	&#125;
+&#125;
+void bfsall(graph g)&#123;
+	&#x2F;&#x2F;初始化
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		visited[i]&#x3D;0;
+	&#125;
+	for(int i&#x3D;0;i&lt;g.vnum;i++)&#123;
+		&#x2F;&#x2F;TODO
+		if(!visited[i])&#123;
+
+			bfs(g,i);&#x2F;&#x2F;TODO
+		&#125;
+	&#125;
+&#125;
+int v&#x3D;0,edge&#x3D;0;
+void dfstest(graph g,int i)&#123;
+	int j&#x3D;0;
+	visited[i]&#x3D;1;&#x2F;&#x2F;标志i结点已经访问过
+	cout&lt;&lt;g.name[i]&lt;&lt;&quot; &quot;;
+	v++;
+	for(j&#x3D;0;j&lt;g.vnum;j++)&#123;
+		&#x2F;&#x2F;TODO
+		if(g.a[i][j]!&#x3D;9999&amp;&amp;g.a[i][j]!&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			edge++;
+			if(visited[j]&#x3D;&#x3D;0)&#123;
+				&#x2F;&#x2F;TODO
+				dfstest(g,j);
+			&#125;
+
+		&#125;
+	&#125;
+&#125;
+&#x2F;&#x2F;判断图是否是树
+bool istree(graph g)&#123;
+	for(int i&#x3D;0;i&lt;visited.size();i++)&#123;
+		&#x2F;&#x2F;TODO
+		visited[i]&#x3D;0;
+	&#125;
+	dfstest(g,0);
+	cout&lt;&lt;v&lt;&lt;endl;
+	cout&lt;&lt;edge&lt;&lt;endl;
+	if(v&#x3D;&#x3D;g.vnum&amp;&amp;edge&#x3D;&#x3D;2*(g.vnum-1))&#123;
+		&#x2F;&#x2F;TODO
+		return true;
+	&#125;else&#123;return false;&#125;
+&#125;
+int main()&#123;
+	graph g;
+	cout&lt;&lt;g.a[2][2]&lt;&lt;endl;
+	cout&lt;&lt;g.name[0]&lt;&lt;endl;
+	&#x2F;&#x2F;dfsall(g);
+	cout&lt;&lt;endl;
+	&#x2F;&#x2F;bfsall(g);
+	cout&lt;&lt;istree(g);
+	return 0;
+&#125;
+</code></pre>
+
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;插入排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void insertsort(myarray test)&#123;
+	int j&#x3D;1;
+	while(j&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(test[j-1]&gt;test[j])&#123;
+			&#x2F;&#x2F;TODO
+			int temp&#x3D;test[j];&#x2F;&#x2F;小的前移
+			int i&#x3D;j-1;
+			while(test[i]&gt;temp&amp;&amp;i&gt;&#x3D;0)&#123;
+				&#x2F;&#x2F;TODO
+				test[i+1]&#x3D;test[i];
+				i--;
+			&#125;
+			test[i+1]&#x3D;temp;
+		&#125;
+		j++;
+	&#125;
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	insertsort(test);
+	return 0;
+&#125;
+
+</code></pre>
+
+<h4 id="二分查找-amp-amp-插入排序"><a href="#二分查找-amp-amp-插入排序" class="headerlink" title="二分查找&amp;&amp;插入排序"></a>二分查找&amp;&amp;插入排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;优化插入排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void half_insert_sort(myarray test)&#123;
+	int j&#x3D;1;
+	while(j&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		if(test[j-1]&gt;test[j])&#123;
+			&#x2F;&#x2F;TODO
+			int temp&#x3D;test[j];
+			int l&#x3D;0,r&#x3D;j-1;
+			while(l&lt;&#x3D;r)&#123;
+				&#x2F;&#x2F;TODO
+				int mid&#x3D;(l+r)&#x2F;2;
+				if(test[mid]&gt;temp)&#123;
+					&#x2F;&#x2F;TODO
+					r&#x3D;mid-1;
+				&#125;else&#123;
+					&#x2F;&#x2F;mid 等于temp时，为保证稳定，所以l继续右移，是temp放在相等的值后面
+					l&#x3D;mid+1;
+				&#125;
+
+			&#125;
+			&#x2F;&#x2F;h指向插入位置的前一位
+			&#x2F;&#x2F;开始移动并插入
+			int i&#x3D;j-1;
+			while(i&gt;r&amp;&amp;i&gt;&#x3D;0)&#123;
+				&#x2F;&#x2F;TODO
+				test[i+1]&#x3D;test[i];
+				i--;
+			&#125;
+			test[r+1]&#x3D;temp;
+		&#125;
+		j++;
+	&#125;
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	half_insert_sort(test);
+	return 0;
+&#125;</code></pre>
+
+
+
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;希尔排序
+&#x2F;&#x2F;将数组分成若干个子表，进行插入排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void shellsort(myarray test)&#123;
+	int d&#x3D;test.size()&#x2F;2;
+	while(d&gt;&#x3D;1)&#123;
+		&#x2F;&#x2F;TODO
+		int i&#x3D;d;
+		while(i&lt;test.size())&#123;
+			&#x2F;&#x2F;TODO
+			if(test[i-d]&gt;test[i])&#123;
+				&#x2F;&#x2F;TODO
+				int temp&#x3D;test[i];
+				int j&#x3D;i-d;
+				while(j&gt;&#x3D;0&amp;&amp;test[j]&gt;temp)&#123;
+					&#x2F;&#x2F;TODO
+					test[j+d]&#x3D;test[j];
+					j&#x3D;j-d;
+				&#125;
+				test[j+d]&#x3D;temp;
+
+			&#125;
+			i++;
+		&#125;
+		d&#x3D;d&#x2F;2;
+	&#125;
+
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	shellsort(test);
+	return 0;
+</code></pre>
+
+
+
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;堆排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void adjust(myarray&amp;test,int root,int len)&#123;
+	int l&#x3D;2*root;
+	int r&#x3D;2*root+1;
+	int maxwhere&#x3D;root;
+	if(l&lt;len&amp;&amp;test[maxwhere]&lt;test[l])&#123;
+		&#x2F;&#x2F;TODO
+		maxwhere&#x3D;l;
+	&#125;
+	if(r&lt;len&amp;&amp;test[maxwhere]&lt;test[r])&#123;
+		&#x2F;&#x2F;TODO
+		maxwhere&#x3D;r;
+	&#125;
+	&#x2F;&#x2F;连续两个if找出三个数值最大的下标
+	if(maxwhere!&#x3D;root)&#123;
+		&#x2F;&#x2F;TODO
+		swap(test[root],test[maxwhere]);&#x2F;&#x2F;交互，但是下标没有变化
+		&#x2F;&#x2F;交换后，max指向的就不是最大值了，而是背换下来的值，会对下一层产生影响，所以向下一层递归
+		adjust(test,maxwhere,len);
+	&#125;
+&#125;
+void heapsort(myarray&amp;test)&#123;
+	int maxwhere&#x3D;(int)(9&#x2F;2);
+	for(int i&#x3D;maxwhere;i&gt;&#x3D;0;i--)&#123;
+		&#x2F;&#x2F;TODO
+		adjust(test,i,8);
+	&#125;&#x2F;&#x2F;建堆就是第一次调整，for循环表示从下往上调整，调整函数里由上往下
+
+
+	&#x2F;&#x2F;开始排序
+	for(int i&#x3D;8;i&gt;&#x3D;0;i--)&#123;
+		&#x2F;&#x2F;TODO
+		cout&lt;&lt;test[0]&lt;&lt;&quot; &quot;;
+		swap(test[0],test[i]);
+		adjust(test,0,i-1);
+	&#125;
+
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	heapsort(test);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;简单选择排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void simple_select_sort(myarray test)&#123;
+	int i&#x3D;0;
+	while(i&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		int minnum&#x3D;test[i];
+		int j&#x3D;i+1;
+		while(j&lt;test.size())&#123;
+			&#x2F;&#x2F;TODO
+			if(minnum&gt;test[j])&#123;
+				&#x2F;&#x2F;TODO
+				int temp&#x3D;minnum;
+				minnum&#x3D;test[j];
+				&#x2F;&#x2F;这里test[j]必须赋值，把未排序的数储存
+				test[j]&#x3D;temp;
+			&#125;
+			j++;
+		&#125;
+		test[i]&#x3D;minnum;
+		i++;
+	&#125;
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	simple_select_sort(test);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;归并排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+
+myarray test&#123;1,2,3,4,5,6,7,2&#125;;
+myarray help(test.size(),0);
+void mysort(myarray&amp;test,int l,int r,int divd)&#123;
+	int k&#x3D;0;
+	while(k&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		help[k]&#x3D;test[k];
+		k++;
+	&#125;
+	int i&#x3D;0,j&#x3D;divd+1;
+	k&#x3D;0;
+	for(;i&lt;&#x3D;divd&amp;&amp;j&lt;&#x3D;r;k++)&#123;
+		&#x2F;&#x2F;TODO
+		if(help[i]&lt;&#x3D;help[j])&#123;
+			&#x2F;&#x2F;TODO
+			test[k]&#x3D;help[i];
+			i++;
+		&#125;else&#123;
+			test[k]&#x3D;help[j];
+			j++;
+		&#125;
+
+	&#125;
+
+	&#x2F;&#x2F;是否有剩余
+	while(i&lt;&#x3D;divd)&#123;
+		&#x2F;&#x2F;TODO
+		test[k]&#x3D;help[i];
+		i++;
+		k++;
+	&#125;
+	while(j&lt;&#x3D;r)&#123;
+		&#x2F;&#x2F;TODO
+		test[k]&#x3D;help[j];
+		j++;
+		k++;
+	&#125;
+
+&#125;
+void mydivid(myarray&amp;test,int l,int r)&#123;
+	if(l&lt;r)&#123;
+		&#x2F;&#x2F;TODO
+		int mid&#x3D;(l+r)&#x2F;2;
+
+		&#x2F;&#x2F;先分
+		mydivid(test,l,mid);
+		mydivid(test,mid+1,r);
+
+
+		&#x2F;&#x2F;再排,合并时必须知道从那间隔
+		mysort(test,l,r,mid);
+	&#125;
+&#125;
+int main()&#123;
+	mydivid(test,0,test.size()-1);
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;快速排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+int findpos(myarray&amp;test,int l,int r)&#123;
+	int temp&#x3D;test[l];
+	while(l&lt;r)&#123;
+		while(l&lt;r&amp;&amp;test[r]&gt;&#x3D;temp)&#123;
+			r--;
+		&#125;
+		test[l]&#x3D;test[r];
+		while(l&lt;r&amp;&amp;test[l]&lt;&#x3D;temp)&#123;
+			&#x2F;&#x2F;TODO
+			l++;
+		&#125;
+		test[r]&#x3D;test[l];
+	&#125;
+	test[l]&#x3D;temp;
+	&#x2F;&#x2F;for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	&#x2F;&#x2F;cout&lt;&lt;endl;
+	return l;
+
+&#125;
+void fastsort(myarray&amp;test,int l,int r)&#123;
+	if(l&lt;r)&#123;
+		int pos&#x3D;findpos(test,l,r);
+		fastsort(test,l,pos-1);
+		fastsort(test,pos+1,r);
+
+	&#125;
+
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	fastsort(test,0,test.size()-1);
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+	return 0;
+&#125;</code></pre>
+
+<h4 id="奇数前偶数后"><a href="#奇数前偶数后" class="headerlink" title="奇数前偶数后"></a>奇数前偶数后</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;奇数前，偶数后
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void fastsort_2(myarray test)&#123;
+	int l&#x3D;0,r&#x3D;test.size()-1;
+	&#x2F;&#x2F;左边找偶数
+	&#x2F;&#x2F;右边找奇数，然后交换
+	while(l&lt;r)&#123;
+		&#x2F;&#x2F;TODO
+		while(l&lt;r&amp;&amp;test[l]%2!&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			l++;
+		&#125;
+		while(l&lt;r&amp;&amp;test[r]%2&#x3D;&#x3D;0)&#123;
+			&#x2F;&#x2F;TODO
+			r--;
+		&#125;
+		if(l&lt;r)&#123;
+			&#x2F;&#x2F;TODO
+			swap(test[l],test[r]);
+			l++;
+			r--;
+		&#125;
+	&#125;
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	fastsort_2(test);
+&#125;</code></pre>
+
+
+
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;冒泡排序
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void bubble_sort(myarray &amp;test)&#123;
+	int i&#x3D;0;
+	while(i&lt;test.size())&#123;
+		&#x2F;&#x2F;TODO
+		bool flag&#x3D;false;
+		int j&#x3D;test.size()-1;
+		while(j&gt;i)&#123;
+			&#x2F;&#x2F;TODO
+			if(test[j-1]&gt;test[j])&#123;
+				&#x2F;&#x2F;TODO
+				int temp&#x3D;test[j-1];
+				test[j-1]&#x3D;test[j];
+				test[j]&#x3D;temp;
+				flag&#x3D;true;
+			&#125;
+
+			j--;
+		&#125;
+		if(flag&#x3D;&#x3D;false)&#123;
+			&#x2F;&#x2F;TODO
+			for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+			return;
+		&#125;
+		i++;
+	&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	bubble_sort(test);
+	return 0;
+&#125;</code></pre>
+
+<h4 id="双冒泡排序"><a href="#双冒泡排序" class="headerlink" title="双冒泡排序"></a>双冒泡排序</h4><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;双冒泡排序,每次遍历一趟，确定一个最大值和最小值
+&#x2F;&#x2F;low左边是确定的最小值，high右边是确定的最大值
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef vector&lt;int&gt; myarray;
+void duble_bubble_sort(myarray test)&#123;
+	int l&#x3D;0, r&#x3D;test.size()-1;
+	bool flag&#x3D;true;
+	while(l&lt;r&amp;&amp;flag)&#123;
+		&#x2F;&#x2F;TODO
+		flag&#x3D;false;&#x2F;&#x2F;表示一开始没有发生变化
+		for(int i&#x3D;l;i&lt;r;i++)&#123;
+			&#x2F;&#x2F;TODO
+			if(test[i]&gt;test[i+1])&#123;
+				&#x2F;&#x2F;TODO
+				int temp&#x3D;test[i];
+				test[i]&#x3D;test[i+1];
+				test[i+1]&#x3D;temp;
+				flag &#x3D;true;
+			&#125;
+		&#125;
+		r--;
+		&#x2F;&#x2F;最大值确定一个，从左到右
+
+
+
+		for(int i&#x3D;r;i&gt;l;i--)&#123;
+			&#x2F;&#x2F;TODO
+			if(test[i-1]&gt;test[i])&#123;
+				&#x2F;&#x2F;TODO
+				int temp&#x3D;test[i-1];
+				test[i-1]&#x3D;test[i];
+				test[i]&#x3D;temp;
+				flag&#x3D;true;
+			&#125;
+		&#125;
+		l++;
+		&#x2F;&#x2F;最小值确定一个
+	&#125;
+	for(auto num:test)&#123;cout&lt;&lt;num&lt;&lt;&quot; &quot;;&#125;
+&#125;
+int main()&#123;
+	myarray test&#123;4,532,44,2323,44350,1,4,24,333&#125;;
+	duble_bubble_sort(test);
+	return 0;
+&#125;</code></pre></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jinganglang567.github.io">jinganglang567</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jinganglang567.github.io/2023/04/04/%E8%87%AA%E5%88%B6%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/">https://jinganglang567.github.io/2023/04/04/%E8%87%AA%E5%88%B6%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jinganglang567.github.io" target="_blank">jinganglang567's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%80%83%E7%A0%94/">考研</a></div><div class="post_share"><div class="social-share" data-image="https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/04/%E8%80%83%E7%A0%94%E6%AF%8F%E5%91%A8%E5%A4%8D%E7%9B%98/" title="考研每周复盘"><img class="cover" src="https://fastly.picsum.photos/id/149/3454/2288.jpg?hmac=JoHMBHymDuk59QWHK89nquWAXE4Su1mF07OKdvmpN3g" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">考研每周复盘</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络"><img class="cover" src="https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/14/%E5%AE%8B%E6%B5%A9/" title="宋浩"><img class="cover" src="https://fastly.picsum.photos/id/480/1080/1080.jpg?hmac=DFxECjXretaLfI_PZOMdZvVzxTt8OE_Xj85SWH_Hvx8" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-14</div><div class="title">宋浩</div></div></a></div><div><a href="/2023/04/04/%E8%80%83%E7%A0%94%E6%AF%8F%E5%91%A8%E5%A4%8D%E7%9B%98/" title="考研每周复盘"><img class="cover" src="https://fastly.picsum.photos/id/149/3454/2288.jpg?hmac=JoHMBHymDuk59QWHK89nquWAXE4Su1mF07OKdvmpN3g" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-04</div><div class="title">考研每周复盘</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./imag/avatar.jfif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jinganglang567</div><div class="author-info__description">welcome to my world</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jinganglang567"><i class="fab fa-github"></i><span>找到我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/jinganglang567" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">邮箱 3237443162@qq.com</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%88%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E7%A0%94%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">自制数据结构考研常用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.1.</span> <span class="toc-text">快慢指针删除重复元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">合并两个顺序表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text">折半查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E8%BF%81%E7%A7%BB"><span class="toc-number">1.1.4.</span> <span class="toc-text">循环迁移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">合并链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">回文链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">二进制链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E9%87%8D%E5%90%88%E7%BB%93%E7%82%B9"><span class="toc-number">1.2.5.</span> <span class="toc-text">链表重合结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E7%8E%AF%E7%8A%B6"><span class="toc-number">1.2.6.</span> <span class="toc-text">判断链表是否环状</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E5%80%BC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.7.</span> <span class="toc-text">删除特定值链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E9%93%BE%E8%A1%A8%E7%BB%93%E7%82%B9"><span class="toc-number">1.2.8.</span> <span class="toc-text">删除重复链表结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.9.</span> <span class="toc-text">中间链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E7%95%99%E5%85%AC%E5%85%B1%E7%BB%93%E7%82%B9"><span class="toc-number">1.2.10.</span> <span class="toc-text">保留公共结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%9A%B4%E5%8A%9B%E5%8C%B9%E9%85%8D"><span class="toc-number">1.2.11.</span> <span class="toc-text">链表暴力匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">1.2.12.</span> <span class="toc-text">链表插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">1.2.13.</span> <span class="toc-text">链表查找倒数第k个元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E5%94%AF%E4%B8%80%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-number">1.2.14.</span> <span class="toc-text">链表删除唯一最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E9%80%92%E5%A2%9E%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.15.</span> <span class="toc-text">链表递增输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E5%85%83%E7%B4%A0%E5%88%9B%E5%BB%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.16.</span> <span class="toc-text">公共元素创建链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.17.</span> <span class="toc-text">合并循环链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="toc-number">1.2.18.</span> <span class="toc-text">头插法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-number">1.2.19.</span> <span class="toc-text">递归删除结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E5%AF%B9%E7%A7%B0"><span class="toc-number">1.2.20.</span> <span class="toc-text">循环链表对称</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.3.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.1.</span> <span class="toc-text">单调栈实现下一个最大元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">二叉树非递归后序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">二叉树非递归先序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.4.</span> <span class="toc-text">二叉树非递归中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><span class="toc-number">1.3.5.</span> <span class="toc-text">括号匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.6.</span> <span class="toc-text">最小栈的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-number">1.3.7.</span> <span class="toc-text">双栈实现队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%9D%9E%E9%80%92%E5%BD%92"><span class="toc-number">1.3.8.</span> <span class="toc-text">栈实现非递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">1.3.9.</span> <span class="toc-text">后缀表达式计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E6%8B%AC%E5%8F%B7"><span class="toc-number">1.3.10.</span> <span class="toc-text">删除无效括号</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">1.4.</span> <span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">循环队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E7%AB%AF%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.4.2.</span> <span class="toc-text">双端循环队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-number">1.4.3.</span> <span class="toc-text">双队列实现栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2"><span class="toc-number">1.5.</span> <span class="toc-text">串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#kmp"><span class="toc-number">1.5.1.</span> <span class="toc-text">kmp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E5%8C%B9%E9%85%8D"><span class="toc-number">1.5.2.</span> <span class="toc-text">暴力匹配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.6.1.</span> <span class="toc-text">二叉树中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">1.6.2.</span> <span class="toc-text">二叉树层次遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6"><span class="toc-number">1.6.3.</span> <span class="toc-text">非递归求二叉树深度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%BD%E5%BA%A6"><span class="toc-number">1.6.4.</span> <span class="toc-text">求二叉树宽度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-number">1.6.5.</span> <span class="toc-text">二叉排序树的判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.6.</span> <span class="toc-text">合并二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AC%AC%E4%BA%8C%E5%B0%8F%E7%BB%93%E7%82%B9"><span class="toc-number">1.6.7.</span> <span class="toc-text">二叉树第二小结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%BB%93%E7%82%B9%E6%98%AF%E4%B8%8D%E6%98%AF%E5%A0%82%E5%85%84%E5%BC%9F"><span class="toc-number">1.6.8.</span> <span class="toc-text">判断结点是不是堂兄弟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%B1%82%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">1.6.9.</span> <span class="toc-text">非递归后序遍历求叶子结点路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E8%B0%83%E6%95%B4"><span class="toc-number">1.6.10.</span> <span class="toc-text">二叉排序树调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%90%8C%E5%AD%90%E6%A0%91%E5%BA%8F%E5%88%97"><span class="toc-number">1.6.11.</span> <span class="toc-text">寻找二叉树相同子树序列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84"><span class="toc-number">1.6.12.</span> <span class="toc-text">二叉树最长同值路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%8F%B3%E5%AD%90%E6%A0%91%E4%BA%A4%E6%8D%A2%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E5%85%88%E5%BA%8F%E5%BA%8F%E5%88%97"><span class="toc-number">1.6.13.</span> <span class="toc-text">左右子树交换是否满足先序序列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9"><span class="toc-number">1.6.14.</span> <span class="toc-text">后序遍历删除特定叶子结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9%E5%B9%B6%E8%B0%83%E6%95%B4"><span class="toc-number">1.6.15.</span> <span class="toc-text">二叉搜索树删除结点并调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E7%BB%93%E7%82%B9%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF"><span class="toc-number">1.6.16.</span> <span class="toc-text">寻找结点最大乘积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E5%AF%B9%E7%A7%B0"><span class="toc-number">1.6.17.</span> <span class="toc-text">判断二叉树是否对称</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E6%9E%84%E6%98%AF%E5%90%A6%E7%9B%B8%E5%90%8C"><span class="toc-number">1.6.18.</span> <span class="toc-text">二叉树结构是否相同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-number">1.6.19.</span> <span class="toc-text">平衡二叉树的判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6"><span class="toc-number">1.6.20.</span> <span class="toc-text">求二叉树最小深度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%AE%9A%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C"><span class="toc-number">1.6.21.</span> <span class="toc-text">特定路径总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.22.</span> <span class="toc-text">有序数组转换为二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E8%A7%A3%E5%86%B3TOP-K%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.23.</span> <span class="toc-text">二叉排序树解决TOP-K问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86%E5%88%A4%E6%96%AD%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.24.</span> <span class="toc-text">层次遍历判断完全二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.25.</span> <span class="toc-text">线索二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E5%B7%A6%E5%88%B0%E5%8F%B3%E7%BB%93%E7%82%B9%E4%B8%B2%E6%88%90%E4%B8%B2"><span class="toc-number">1.6.26.</span> <span class="toc-text">从左到右结点串成串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%B8%A4%E6%A0%91%E7%9B%B8%E4%BC%BC"><span class="toc-number">1.6.27.</span> <span class="toc-text">判断两树相似</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-number">1.6.28.</span> <span class="toc-text">二叉树最近公共祖先</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A9%E5%AD%90%E5%85%84%E5%BC%9F%E8%A1%A8%E7%A4%BA%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E4%B8%AA%E6%95%B0"><span class="toc-number">1.6.29.</span> <span class="toc-text">孩子兄弟表示法计算叶子结点个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A9%E5%AD%90%E5%85%84%E5%BC%9F%E8%A1%A8%E7%A4%BA%E6%B3%95%E6%B1%82%E6%A0%91%E6%B7%B1%E5%BA%A6"><span class="toc-number">1.6.30.</span> <span class="toc-text">孩子兄弟表示法求树深度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%85%88%E5%BA%8F%E6%B1%82%E5%90%8E%E5%BA%8F"><span class="toc-number">1.6.31.</span> <span class="toc-text">根据满二叉树的先序求后序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%85%88%E5%BA%8F%E5%92%8C%E5%90%8E%E5%BA%8F%E6%9E%84%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.32.</span> <span class="toc-text">根据先序和后序构建二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E5%8C%96%E5%90%8E%E6%89%BE%E5%90%8E%E5%BA%8F%E5%89%8D%E9%A9%B1"><span class="toc-number">1.6.33.</span> <span class="toc-text">中序线索化后找后序前驱</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">1.7.</span> <span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E9%80%92%E5%BD%92"><span class="toc-number">1.7.1.</span> <span class="toc-text">二分查找递归</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">1.8.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bfs%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">1.8.1.</span> <span class="toc-text">bfs最短路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfs%E9%80%86%E6%8B%93%E6%89%91"><span class="toc-number">1.8.2.</span> <span class="toc-text">dfs逆拓扑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.8.3.</span> <span class="toc-text">最小生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="toc-number">1.8.4.</span> <span class="toc-text">迪杰斯特拉单源最短路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfs-amp-amp-bfs"><span class="toc-number">1.8.5.</span> <span class="toc-text">dfs&amp;&amp;bfs</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.1.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-amp-amp-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">二分查找&amp;&amp;插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.3.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.4.</span> <span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.5.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.6.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.7.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%87%E6%95%B0%E5%89%8D%E5%81%B6%E6%95%B0%E5%90%8E"><span class="toc-number">1.9.8.</span> <span class="toc-text">奇数前偶数后</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.9.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.10.</span> <span class="toc-text">双冒泡排序</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/04/%E8%80%83%E7%A0%94%E6%AF%8F%E5%91%A8%E5%A4%8D%E7%9B%98/" title="考研每周复盘">考研每周复盘</a><time datetime="2023-04-04T06:44:48.000Z" title="发表于 2023-04-04 14:44:48">2023-04-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/04/%E8%87%AA%E5%88%B6%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/" title="自制考研数据结构常用代码">自制考研数据结构常用代码</a><time datetime="2023-04-04T05:46:45.000Z" title="发表于 2023-04-04 13:46:45">2023-04-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a><time datetime="2023-03-19T06:57:41.000Z" title="发表于 2023-03-19 14:57:41">2023-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/14/%E5%AE%8B%E6%B5%A9/" title="宋浩">宋浩</a><time datetime="2023-03-14T11:01:17.190Z" title="发表于 2023-03-14 19:01:17">2023-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/12/%E4%B8%A4%E5%A4%A7%E4%BC%A0%E5%A5%87-%E5%AE%BF%E5%91%BD%E5%AF%B9%E5%86%B3/" title="两大传奇 宿命对决">两大传奇 宿命对决</a><time datetime="2023-03-12T10:14:07.286Z" title="发表于 2023-03-12 18:14:07">2023-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By jinganglang567</div><div class="footer_custom_text">欢迎你的到来</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8234261396" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script async src="/js/sakura.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
